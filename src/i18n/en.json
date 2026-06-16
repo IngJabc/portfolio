@@ -1,0 +1,73 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "skills": "Skills",
+    "projects": "Projects",
+    "experience": "Experience",
+    "ai": "AI Assistant",
+    "contact": "Contact"
+  },
+  "boot": {
+    "title": "Fullstack Web Developer",
+    "loading": "Initializing system...",
+    "subtitle": "Loading interactive portfolio"
+  },
+  "dashboard": {
+    "title": "Control Panel",
+    "systemStatus": "System Status",
+    "quickMetrics": "Quick Metrics",
+    "navigation": "Navigation",
+    "viewSkills": "View Skills",
+    "viewProjects": "View Projects",
+    "viewExperience": "View Experience",
+    "aiAssistant": "AI Assistant",
+    "contact": "Contact"
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Engineering case studies",
+    "problem": "Problem",
+    "architecture": "Architecture",
+    "challenges": "Challenges",
+    "solution": "Solution",
+    "result": "Result",
+    "stack": "Stack",
+    "viewProject": "View project"
+  },
+  "experience": {
+    "title": "Experience",
+    "subtitle": "Technical trajectory"
+  },
+  "ai": {
+    "title": "AI Assistant",
+    "subtitle": "Ask about the developer",
+    "placeholder": "Type your question...",
+    "examples": [
+      "What projects has he built?",
+      "Does he have backend experience?",
+      "What is his tech stack?",
+      "Can he lead architecture?"
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Let's connect",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send",
+    "orAskAI": "Or ask the AI about me"
+  },
+  "skills": {
+    "title": "Skills",
+    "subtitle": "Technical inventory"
+  },
+  "status": {
+    "frontend": "Frontend",
+    "backend": "Backend APIs",
+    "database": "Database",
+    "auth": "Auth Systems",
+    "realtime": "Realtime Engine",
+    "ai": "AI Layer"
+  }
+}

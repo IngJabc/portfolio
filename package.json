@@ -1,0 +1,37 @@
+{
+  "name": "portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "tw": "tailwindcss -i src/styles/tailwind-input.css -o public/tailwind.css",
+    "tww": "tailwindcss -i src/styles/tailwind-input.css -o public/tailwind.css --watch",
+    "dev": "npm run tw && next dev",
+    "dev:tw": "concurrently \"npm run tww\" \"next dev\"",
+    "build": "npm run tw && next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.1",
+    "framer-motion": "^12.40.0",
+    "next": "16.2.9",
+    "next-intl": "^4.13.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "three": "^0.184.0",
+    "zustand": "^5.0.14"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.1",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/three": "^0.184.1",
+    "concurrently": "^10.0.3",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.9",
+    "tailwindcss": "^4.3.1",
+    "typescript": "^5"
+  }
+}

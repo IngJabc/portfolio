@@ -1,0 +1,73 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "skills": "Habilidades",
+    "projects": "Proyectos",
+    "experience": "Experiencia",
+    "ai": "AI Assistant",
+    "contact": "Contacto"
+  },
+  "boot": {
+    "title": "Fullstack Web Developer",
+    "loading": "Inicializando sistema...",
+    "subtitle": "Cargando portfolio interactivo"
+  },
+  "dashboard": {
+    "title": "Panel de Control",
+    "systemStatus": "Estado del Sistema",
+    "quickMetrics": "Métricas Rápidas",
+    "navigation": "Navegación",
+    "viewSkills": "Ver Habilidades",
+    "viewProjects": "Ver Proyectos",
+    "viewExperience": "Ver Experiencia",
+    "aiAssistant": "AI Assistant",
+    "contact": "Contacto"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "subtitle": "Case studies de ingeniería",
+    "problem": "Problema",
+    "architecture": "Arquitectura",
+    "challenges": "Desafíos",
+    "solution": "Solución",
+    "result": "Resultado",
+    "stack": "Stack",
+    "viewProject": "Ver proyecto"
+  },
+  "experience": {
+    "title": "Experiencia",
+    "subtitle": "Trayectoria técnica"
+  },
+  "ai": {
+    "title": "AI Assistant",
+    "subtitle": "Pregunta sobre el desarrollador",
+    "placeholder": "Escribe tu pregunta...",
+    "examples": [
+      "¿Qué proyectos ha construido?",
+      "¿Tiene experiencia en backend?",
+      "¿Qué stack domina?",
+      "¿Puede liderar arquitectura?"
+    ]
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "Conectemos",
+    "name": "Nombre",
+    "email": "Email",
+    "message": "Mensaje",
+    "send": "Enviar",
+    "orAskAI": "O pregúntale a la IA sobre mí"
+  },
+  "skills": {
+    "title": "Habilidades",
+    "subtitle": "Inventario técnico"
+  },
+  "status": {
+    "frontend": "Frontend",
+    "backend": "Backend APIs",
+    "database": "Base de Datos",
+    "auth": "Sistemas de Auth",
+    "realtime": "Motor Tiempo Real",
+    "ai": "Capa de IA"
+  }
+}
