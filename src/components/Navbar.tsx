@@ -21,7 +21,7 @@ export default function Navbar() {
     { href: "/skills", label: t("skills") },
     { href: "/projects", label: t("projects") },
     { href: "/experience", label: t("experience") },
-    { href: "/ai", label: t("ai") },
+    // AI assistant is now a global floating widget (JabcBot)
     { href: "/contact", label: t("contact") },
   ];
 
@@ -31,8 +31,11 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 glass-panel rounded-none border-x-0 border-t-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href={`/${urlLocale}/dashboard`} className="text-lg font-bold text-[var(--accent)] tracking-tight">
-            José Bonilla
+          <Link href={`/${urlLocale}/dashboard`} className="flex items-baseline gap-2 group">
+            <span className="text-lg font-bold text-[var(--accent)] tracking-tight">José Bonilla</span>
+            <span className="hidden sm:inline text-[10px] font-mono text-[var(--text-muted)] group-hover:text-[var(--text-secondary)] transition-colors">
+              Web Application Engineer · AI-First
+            </span>
           </Link>
 
           <div className="hidden md:flex items-center gap-6">
@@ -83,7 +86,7 @@ export default function Navbar() {
               <div className="absolute inset-0 flex flex-col justify-center items-center gap-1">
                 <span
                   className={`block h-0.5 w-6 rounded bg-current transition-all duration-300 origin-center ${
-                    isOpen ? "rotate-45 translate-y-[3px]" : ""
+                    isOpen ? "rotate-45 translate-y-[6px]" : ""
                   }`}
                 />
                 <span
@@ -93,7 +96,7 @@ export default function Navbar() {
                 />
                 <span
                   className={`block h-0.5 w-6 rounded bg-current transition-all duration-300 origin-center ${
-                    isOpen ? "-rotate-45 -translate-y-[3px]" : ""
+                    isOpen ? "-rotate-45 -translate-y-[6px]" : ""
                   }`}
                 />
               </div>

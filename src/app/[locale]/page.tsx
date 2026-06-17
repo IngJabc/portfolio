@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import dynamic from "next/dynamic";
+import { personalInfo } from "@/lib/cv-data";
 import { dictionary } from "@/lib/translations";
 
 const Scene3D = dynamic(() => import("@/components/Scene3D"), {
@@ -16,6 +18,8 @@ export default function BootPage() {
   const lang = urlLocale === "es" ? "es" : "en";
   const [progress, setProgress] = useState(0);
   const [bootLines, setBootLines] = useState<string[]>([]);
+  const [done, setDone] = useState(false);
+  const [skipped, setSkipped] = useState(false);
 
   const dict = dictionary[lang].boot;
   const bootMessages = [
@@ -37,14 +41,20 @@ export default function BootPage() {
         lineIndex++;
       } else {
         clearInterval(lineInterval);
+        setDone(true);
         setTimeout(() => {
-          router.push(`/${urlLocale}/dashboard`);
-        }, 800);
+          if (!skipped) router.push(`/${urlLocale}/dashboard`);
+        }, 500);
       }
-    }, 200);
+    }, 130);
 
     return () => clearInterval(lineInterval);
-  }, [router]);
+  }, [router, urlLocale, skipped]);
+
+  const handleSkip = () => {
+    setSkipped(true);
+    router.push(`/${urlLocale}/dashboard`);
+  };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-[var(--bg-primary)] px-4 relative overflow-hidden">
@@ -52,14 +62,35 @@ export default function BootPage() {
         <Scene3D />
       </div>
       <div className="relative z-10 w-full max-w-lg">
-        <div className="mb-8 text-center">
-          <h1 className="text-2xl font-bold text-[var(--accent)] font-mono mb-2">
-            {dict.title}
+        <div className="mb-6 text-center">
+          <h1 className="text-2xl font-bold text-[var(--text-primary)] font-mono mb-1">
+            {personalInfo.name}
           </h1>
-          <p className="text-[var(--text-secondary)] font-mono text-sm">{dict.loading}</p>
+          <p className="text-sm text-[var(--accent)] font-mono">{dict.title}</p>
+          <p className="text-xs text-[var(--text-secondary)] font-mono mt-3 leading-relaxed">
+            {dict.valueProp}
+          </p>
+          <div className="flex items-center justify-center gap-3 mt-5">
+            <Link
+              href={`/${urlLocale}/projects`}
+              aria-label={`${dict.viewProjects} — navigate to projects`}
+              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs rounded-lg bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/30 hover:bg-[var(--accent)]/20 transition-colors font-mono"
+            >
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+              {dict.viewProjects}
+            </Link>
+            <Link
+              href={`/${urlLocale}/contact`}
+              aria-label={`${dict.contact} — navigate to contact`}
+              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs rounded-lg bg-[var(--bg-elevated)] text-[var(--text-secondary)] border border-[var(--border)] hover:border-[var(--accent)]/30 hover:text-[var(--accent)] transition-colors font-mono"
+            >
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+              {dict.contact}
+            </Link>
+          </div>
         </div>
 
-        <div className="glass-panel p-6 mb-6 font-mono text-sm">
+        <div className="glass-panel p-6 mb-4 font-mono text-sm">
           <div className="space-y-1.5">
             {bootLines.map((line, i) => (
               <p
@@ -69,17 +100,30 @@ export default function BootPage() {
                 <span className="text-[var(--success)]">$</span> {line}
               </p>
             ))}
-            {bootLines.length < bootMessages.length && (
+            {!done && (
               <span className="text-[var(--accent)] animate-boot-pulse">_</span>
+            )}
+            {done && (
+              <p className="text-[var(--success)] animate-fade-slide-up">
+                <span className="text-[var(--success)]">$</span> {dict.systemReady}
+              </p>
             )}
           </div>
         </div>
 
-        <div className="w-full bg-[var(--border)] rounded-full h-1.5 overflow-hidden">
-          <div
-            className="h-full bg-[var(--accent)] rounded-full transition-all duration-300 ease-out"
-            style={{ width: `${progress}%` }}
-          />
+        <div className="flex items-center gap-3">
+          <div className="flex-1 bg-[var(--border)] rounded-full h-1.5 overflow-hidden">
+            <div
+              className="h-full bg-[var(--accent)] rounded-full transition-all duration-300 ease-out"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
+          <button
+            onClick={handleSkip}
+            className="shrink-0 text-xs font-mono text-[var(--text-muted)] hover:text-[var(--accent)] transition-colors"
+          >
+            {dict.skip}
+          </button>
         </div>
       </div>
     </div>

@@ -3,8 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { useT } from "@/components/LocaleProvider";
-import { useLocaleContext } from "@/components/LocaleProvider";
+import { useT, useLocaleContext } from "@/components/LocaleProvider";
 import { dictionary } from "@/lib/translations";
 
 export default function ContactPage() {
@@ -24,26 +23,86 @@ export default function ContactPage() {
 
         <div className="glass-panel p-6 mb-6">
           <div className="space-y-4">
-            <ContactItem label={dict.email} value="jose@example.com" clickToReveal={dict.clickToReveal} />
-            <ContactItem label={dict.linkedin} value="linkedin.com/in/ing-jabc" link="https://www.linkedin.com/in/ing-jabc" />
-            <ContactItem label={dict.github} value="github.com/jose" link="#" clickToReveal={dict.clickToReveal} />
+            <ContactItem
+              label={dict.email}
+              value="jose@example.com"
+              copyable
+              copiedText={dict.copied}
+              copyLabel={dict.copyLabel}
+            />
+            <ContactItem
+              label={dict.linkedin}
+              value="linkedin.com/in/ing-jabc"
+              link="https://www.linkedin.com/in/ing-jabc"
+            />
+          </div>
+        </div>
+
+        <div className="glass-panel p-6 mb-6">
+          <div className="flex items-center justify-between flex-wrap gap-4">
+            <div>
+              <p className="text-sm font-semibold text-[var(--text-primary)]">{dict.schedule}</p>
+              <p className="text-xs text-[var(--text-muted)] font-mono mt-0.5">{dict.scheduleDesc}</p>
+            </div>
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors shrink-0"
+              style={{
+                backgroundColor: "var(--accent-10)",
+                color: "var(--accent)",
+                border: "1px solid var(--accent-30)",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--accent-20)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = "var(--accent-10)";
+              }}
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                />
+              </svg>
+              {dict.schedule}
+            </a>
+          </div>
+        </div>
+
+        <div className="glass-panel p-6 mb-6" role="status" aria-live="polite">
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] font-mono text-[var(--success)]" aria-hidden="true">$</span>
+            <span className="text-xs font-mono text-[var(--text-secondary)]">
+              {dict.availability}
+            </span>
           </div>
         </div>
 
         <div className="glass-panel p-6">
-          <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-4">{t("orAskAI")}</h3>
+          <h3 className="text-sm font-semibold text-[var(--text-primary)] mb-2 leading-relaxed">
+            {dict.orAskAI}
+          </h3>
           <Link
             href={`/${urlLocale}/ai`}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm transition-colors"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm transition-colors mt-3"
             style={{
-              backgroundColor: 'var(--accent-10)',
-              color: 'var(--accent)',
-              border: '1px solid var(--accent-30)',
+              backgroundColor: "var(--accent-10)",
+              color: "var(--accent)",
+              border: "1px solid var(--accent-30)",
             }}
-            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--accent-20)'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'var(--accent-10)'; }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = "var(--accent-20)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "var(--accent-10)";
+            }}
           >
-            <span>🤖</span> {dict.aiAssistant}
+            <span aria-hidden="true">🤖</span> {dict.aiAssistant}
           </Link>
         </div>
       </div>
@@ -51,29 +110,77 @@ export default function ContactPage() {
   );
 }
 
-function ContactItem({ label, value, link, clickToReveal }: { label: string; value: string; link?: string; clickToReveal?: string }) {
+function ContactItem({
+  label,
+  value,
+  link,
+  clickToReveal,
+  copyable,
+  copiedText,
+  copyLabel,
+}: {
+  label: string;
+  value: string;
+  link?: string;
+  clickToReveal?: string;
+  copyable?: boolean;
+  copiedText?: string;
+  copyLabel?: string;
+}) {
   const [revealed, setRevealed] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      /* silent fallback */
+    }
+  };
 
   return (
-    <div className="flex items-center justify-between py-2 border-b border-[var(--border)] last:border-0">
+    <div className="flex items-center justify-between py-2 border-b border-[var(--border)] last:border-0 flex-wrap gap-2">
       <span className="text-sm text-[var(--text-secondary)] font-mono">{label}</span>
-      {link ? (
-        <a
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm text-[var(--accent)] hover:underline"
-        >
-          {value}
-        </a>
-      ) : (
-        <button
-          onClick={() => setRevealed(true)}
-          className="text-sm text-[var(--accent)] hover:underline"
-        >
-          {revealed ? value : (clickToReveal || "[Click to reveal]")}
-        </button>
-      )}
+      <div className="flex items-center gap-2">
+        {link ? (
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-[var(--accent)] hover:underline"
+          >
+            {value}
+          </a>
+        ) : clickToReveal && !copyable ? (
+          <button
+            onClick={() => setRevealed(true)}
+            className="text-sm text-[var(--accent)] hover:underline"
+          >
+            {revealed ? value : clickToReveal}
+          </button>
+        ) : (
+          <>
+            <span className="text-sm text-[var(--accent)]">{value}</span>
+            <button
+              onClick={handleCopy}
+              title={copyLabel}
+              aria-label={copied ? copiedText : copyLabel}
+              className="px-2 py-1 text-[10px] rounded font-mono transition-colors whitespace-nowrap"
+              style={{
+                backgroundColor: copied
+                  ? "color-mix(in srgb, var(--success) 20%, transparent)"
+                  : "var(--bg-elevated)",
+                color: copied ? "var(--success)" : "var(--text-muted)",
+                border: "1px solid var(--border)",
+              }}
+            >
+              {copied ? copiedText : copyLabel}
+            </button>
+          </>
+        )}
+      </div>
     </div>
   );
 }

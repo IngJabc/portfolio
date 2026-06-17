@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import ThemeProvider from "@/components/ThemeProvider";
 import { LocaleProvider } from "@/components/LocaleProvider";
 import ParticleFieldWrapper from "@/components/ParticleFieldWrapper";
+import JabcBot from "@/components/JabcBot";
 import { getLocale } from "next-intl/server";
 
 const geistSans = Geist({
@@ -18,9 +19,22 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ing-jabc.vercel.app"),
   title: "José Bonilla | Fullstack Web Developer",
   description: "Fullstack Web Developer specializing in Next.js, NestJS, TypeScript and system architecture.",
   icons: {},
+  openGraph: {
+    title: "José Bonilla | Fullstack Web Developer",
+    description: "Fullstack developer specialized in Next.js, NestJS, TypeScript and system architecture.",
+    url: "https://ing-jabc.vercel.app",
+    type: "website",
+    images: [{ url: "/og-image.svg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "José Bonilla | Fullstack Web Developer",
+    description: "Fullstack developer specialized in Next.js, NestJS, TypeScript and system architecture.",
+  },
 };
 
 export default async function RootLayout({
@@ -42,6 +56,8 @@ export default async function RootLayout({
             <div className="relative z-10 flex flex-col min-h-full">
               <Navbar />
               <main className="flex-1">{children}</main>
+              {/* Mount JabcBot globally so it's available on all pages */}
+              <JabcBot />
             </div>
           </LocaleProvider>
         </ThemeProvider>
