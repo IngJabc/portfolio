@@ -15,17 +15,22 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen pt-20 pb-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="mb-8">
-          <h1 className="text-2xl font-bold text-[var(--text-primary)]">{t("title")}</h1>
-          <p className="text-[var(--text-secondary)] text-sm mt-1">/{">"} {t("subtitle")}</p>
+          <h1 className="text-2xl font-bold text-[var(--text-primary)]">
+            {t("title")}
+          </h1>
+          <p className="text-[var(--text-secondary)] text-sm mt-1">
+            /{">"} {t("subtitle")}
+          </p>
         </div>
 
         <div className="glass-panel p-6 mb-6">
           <div className="space-y-4">
             <ContactItem
               label={dict.email}
-              value="jose@example.com"
+              value="ingjosebonilla@gmail.com"
+              link={`https://mail.google.com/mail/?view=cm&fs=1&to=ingjosebonilla@gmail.com&su=${encodeURIComponent(dict.emailSubject)}`}
               copyable
               copiedText={dict.copied}
               copyLabel={dict.copyLabel}
@@ -41,11 +46,15 @@ export default function ContactPage() {
         <div className="glass-panel p-6 mb-6">
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div>
-              <p className="text-sm font-semibold text-[var(--text-primary)]">{dict.schedule}</p>
-              <p className="text-xs text-[var(--text-muted)] font-mono mt-0.5">{dict.scheduleDesc}</p>
+              <p className="text-sm font-semibold text-[var(--text-primary)]">
+                {dict.schedule}
+              </p>
+              <p className="text-xs text-[var(--text-muted)] font-mono mt-0.5">
+                {dict.scheduleDesc}
+              </p>
             </div>
             <a
-              href="#"
+              href={`https://wa.me/584245552793?text=${encodeURIComponent(dict.waMessage)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-colors shrink-0"
@@ -61,7 +70,12 @@ export default function ContactPage() {
                 e.currentTarget.style.backgroundColor = "var(--accent-10)";
               }}
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -71,15 +85,6 @@ export default function ContactPage() {
               </svg>
               {dict.schedule}
             </a>
-          </div>
-        </div>
-
-        <div className="glass-panel p-6 mb-6" role="status" aria-live="polite">
-          <div className="flex items-center gap-2">
-            <span className="text-[10px] font-mono text-[var(--success)]" aria-hidden="true">$</span>
-            <span className="text-xs font-mono text-[var(--text-secondary)]">
-              {dict.availability}
-            </span>
           </div>
         </div>
 
@@ -102,7 +107,7 @@ export default function ContactPage() {
               e.currentTarget.style.backgroundColor = "var(--accent-10)";
             }}
           >
-            <span aria-hidden="true">🤖</span> {dict.aiAssistant}
+            <span>🤖</span> {dict.aiAssistant}
           </Link>
         </div>
       </div>
@@ -142,9 +147,11 @@ function ContactItem({
 
   return (
     <div className="flex items-center justify-between py-2 border-b border-[var(--border)] last:border-0 flex-wrap gap-2">
-      <span className="text-sm text-[var(--text-secondary)] font-mono">{label}</span>
+      <span className="text-sm text-[var(--text-secondary)] font-mono">
+        {label}
+      </span>
       <div className="flex items-center gap-2">
-        {link ? (
+        {link && (
           <a
             href={link}
             target="_blank"
@@ -153,32 +160,32 @@ function ContactItem({
           >
             {value}
           </a>
-        ) : clickToReveal && !copyable ? (
+        )}
+        {!link && clickToReveal && !copyable ? (
           <button
             onClick={() => setRevealed(true)}
             className="text-sm text-[var(--accent)] hover:underline"
           >
             {revealed ? value : clickToReveal}
           </button>
-        ) : (
-          <>
-            <span className="text-sm text-[var(--accent)]">{value}</span>
-            <button
-              onClick={handleCopy}
-              title={copyLabel}
-              aria-label={copied ? copiedText : copyLabel}
-              className="px-2 py-1 text-[10px] rounded font-mono transition-colors whitespace-nowrap"
-              style={{
-                backgroundColor: copied
-                  ? "color-mix(in srgb, var(--success) 20%, transparent)"
-                  : "var(--bg-elevated)",
-                color: copied ? "var(--success)" : "var(--text-muted)",
-                border: "1px solid var(--border)",
-              }}
-            >
-              {copied ? copiedText : copyLabel}
-            </button>
-          </>
+        ) : !link ? (
+          <span className="text-sm text-[var(--accent)]">{value}</span>
+        ) : null}
+        {copyable && (
+          <button
+            onClick={handleCopy}
+            title={copyLabel}
+            className="px-2 py-1 text-[10px] rounded font-mono transition-colors whitespace-nowrap"
+            style={{
+              backgroundColor: copied
+                ? "color-mix(in srgb, var(--success) 20%, transparent)"
+                : "var(--bg-elevated)",
+              color: copied ? "var(--success)" : "var(--text-muted)",
+              border: "1px solid var(--border)",
+            }}
+          >
+            {copied ? copiedText : copyLabel}
+          </button>
         )}
       </div>
     </div>

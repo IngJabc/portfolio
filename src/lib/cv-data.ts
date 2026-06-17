@@ -30,11 +30,11 @@ export interface Skill {
 
 export const personalInfo = {
   name: "José Bonilla",
-  title: "Full-Stack Engineer specialized in SaaS, Fintech & Real-Time Systems",
+  title: "Web Application Engineer · AI-First",
   email: "",
   linkedin: "https://www.linkedin.com/in/ing-jabc",
   github: "",
-  bio: "Fullstack engineer with 3+ years of experience building scalable web applications. Specialized in Next.js, NestJS, and real-time systems. Passionate about clean architecture, system design, and production-grade solutions.",
+  bio: "Web Application Engineer with 3+ years of experience building scalable web applications. Specialized in Next.js, NestJS, and real-time systems. Passionate about clean architecture, system design, and production-grade solutions.",
   yearsOfExperience: 3,
   domains: ["SaaS", "Fintech", "Real-time Systems", "API Architecture", "Headless CMS"],
 };

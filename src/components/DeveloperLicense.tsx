@@ -91,7 +91,7 @@ export default function DeveloperLicense() {
                     {locale === "en" ? "Class" : "Clase"}
                     <span className="text-[var(--accent)]"> │</span>
                   </span>
-                  <span className="text-[var(--text-primary)]">A — Fullstack</span>
+                  <span className="text-[var(--text-primary)]">A — Web Application Engineer · AI-First</span>
                 </div>
                 <div className="flex gap-2">
                   <span className="text-[var(--text-muted)] w-16 shrink-0">

@@ -25,16 +25,19 @@ export default function JabcBot() {
   };
 
   return (
-    <div className="fixed bottom-0 right-0 pointer-events-none" aria-live="polite">
+    <div
+      className="fixed bottom-0 right-0 pointer-events-none"
+      aria-live="polite"
+    >
       {/* Floating button */}
       <button
         aria-expanded={open}
         aria-controls="jabcbot-panel"
         onClick={() => setOpen((s) => !s)}
-        className="pointer-events-auto fixed bottom-6 right-6 z-50 inline-flex items-center gap-2 px-3 py-2 rounded-lg font-mono bg-[var(--bg-elevated)] text-[var(--text-primary)] border border-[var(--border)] shadow-lg hover:scale-105 transition-transform"
+        className="pointer-events-auto fixed bottom-6 right-6 z-50 inline-flex items-center gap-2 px-3 py-2 rounded-lg font-mono bg-[var(--bg-elevated)] text-[var(--text-primary)] border border-[var(--border)] shadow-lg hover:scale-105 transition-transform cursor-pointer"
         title={open ? dict.buttonClose : dict.buttonOpen}
       >
-        <span className="text-xs font-mono">&gt;</span>
+        {/* <span className="text-xs font-mono">&gt;</span> */}
         <span className="font-semibold text-sm">{dict.open}</span>
       </button>
 
@@ -55,19 +58,19 @@ export default function JabcBot() {
 
               <div className="p-2 border-t border-[var(--border)] bg-[var(--bg-primary)] flex gap-2 items-center">
                 <button
-                  onClick={() => handleNavigate('/projects')}
+                  onClick={() => handleNavigate("/projects")}
                   className="flex-1 text-xs font-mono px-2 py-1 rounded bg-[var(--bg-elevated)] border border-[var(--border)] hover:bg-[var(--accent)]/5"
                 >
                   {dict.footerProjects}
                 </button>
                 <button
-                  onClick={() => handleNavigate('/skills')}
+                  onClick={() => handleNavigate("/skills")}
                   className="flex-1 text-xs font-mono px-2 py-1 rounded bg-[var(--bg-elevated)] border border-[var(--border)] hover:bg-[var(--accent)]/5"
                 >
                   {dict.footerSkills}
                 </button>
                 <button
-                  onClick={() => handleNavigate('/contact')}
+                  onClick={() => handleNavigate("/contact")}
                   className="text-xs font-mono px-2 py-1 rounded bg-[var(--bg-elevated)] border border-[var(--border)] hover:bg-[var(--accent)]/5"
                 >
                   {dict.footerContact}
