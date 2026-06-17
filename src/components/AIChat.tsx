@@ -147,6 +147,8 @@ export default function AIChat({ fullHeight = false, onClose }: { fullHeight?: b
     }
   };
 
+  
+
   const examples = dict.examples;
 
   // When example chip clicked, send automatically
@@ -167,7 +169,7 @@ export default function AIChat({ fullHeight = false, onClose }: { fullHeight?: b
   };
 
   return (
-    <div className={`${fullHeight ? "flex flex-col h-full" : ""}`}>
+    <div className={`${fullHeight ? "flex flex-col flex-1 min-h-0 overflow-hidden" : ""}`}>
       {!fullHeight && (
         <div className="flex items-center gap-2 mb-4" role="radiogroup" aria-label="Chat display mode">
           <button
@@ -199,9 +201,9 @@ export default function AIChat({ fullHeight = false, onClose }: { fullHeight?: b
         </div>
       )}
 
-      {mode === "terminal" ? (
+        {mode === "terminal" ? (
         <div className={`glass-panel overflow-hidden ${fullHeight ? "flex flex-col h-full" : ""}`}>
-          <div className="bg-[var(--bg-primary)]/80 px-4 py-2 border-b border-[var(--border)] flex items-center justify-between">
+          <div className="bg-[var(--bg-primary)]/80 px-3 py-2 sm:px-4 border-b border-[var(--border)] flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="w-2.5 h-2.5 rounded-full bg-[var(--success)]" />
               <div className="w-2.5 h-2.5 rounded-full bg-[var(--warning)]" />
@@ -214,7 +216,7 @@ export default function AIChat({ fullHeight = false, onClose }: { fullHeight?: b
               </button>
             )}
           </div>
-          <div className={`${fullHeight ? "p-3 font-mono text-sm flex-1 overflow-y-auto space-y-3 min-h-0" : "p-4 font-mono text-sm max-h-[500px] overflow-y-auto space-y-3"}`}>
+          <div className={`${fullHeight ? "p-2 sm:p-3 font-mono text-sm flex-1 overflow-y-auto space-y-2 min-h-0" : "p-4 font-mono text-sm max-h-[500px] overflow-y-auto space-y-3"}`}>
             {messages.map((msg, i) => (
               <div key={i} className={msg.role === "user" ? "text-[var(--text-secondary)]" : "text-[var(--text-primary)]"}>
                 {msg.role === "user" ? (
@@ -235,28 +237,28 @@ export default function AIChat({ fullHeight = false, onClose }: { fullHeight?: b
             )}
             <div ref={messagesEndRef} />
           </div>
-          <div className={`${fullHeight ? "border-t border-[var(--border)] p-3" : "border-t border-[var(--border)] p-4"}`}>
+          <div className={`${fullHeight ? "border-t border-[var(--border)] p-2 sm:p-3" : "border-t border-[var(--border)] p-4"}`}>
             <div className="flex gap-2">
               <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
                 placeholder={dict.placeholder}
-                className="flex-1 bg-[var(--bg-primary)] border border-[var(--border)] rounded-lg px-3 py-2 text-sm text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--accent)]/50 font-mono"
+                className="flex-1 bg-[var(--bg-primary)] border border-[var(--border)] rounded-md px-2 py-1 sm:px-3 sm:py-2 text-sm text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--accent)]/50 font-mono"
               />
               <button
                 onClick={handleSend}
                 aria-label={dict.send}
-                className="px-4 py-2 rounded-lg bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/30 text-sm hover:bg-[var(--accent)]/20 transition-colors"
+                className="px-3 py-1 sm:px-4 sm:py-2 rounded-lg bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/30 text-sm hover:bg-[var(--accent)]/20 transition-colors"
               >
                 {dict.send}
               </button>
             </div>
           </div>
         </div>
-      ) : (
-        <div className={`glass-panel p-4 ${fullHeight ? "flex flex-col h-full" : ""}`}>
-          <div className={`${fullHeight ? "flex-1 overflow-auto space-y-4 mb-4" : "max-h-[500px] overflow-y-auto space-y-4 mb-4"}`}>
+        ) : (
+        <div className={`glass-panel p-3 sm:p-4 ${fullHeight ? "flex flex-col h-full" : ""}`}>
+          <div className={`${fullHeight ? "flex-1 overflow-y-auto min-h-0 space-y-3 mb-3" : "max-h-[500px] overflow-y-auto space-y-4 mb-4"}`}>
             {messages.map((msg, i) => (
               <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                 <div
@@ -279,23 +281,23 @@ export default function AIChat({ fullHeight = false, onClose }: { fullHeight?: b
             )}
             <div ref={messagesEndRef} />
           </div>
-          <div className="flex gap-2">
-            <input
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder={dict.placeholder}
-              className="flex-1 bg-[var(--bg-primary)] border border-[var(--border)] rounded-lg px-3 py-2 text-sm text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--accent)]/50"
-            />
-            <button
-              onClick={handleSend}
-              aria-label={dict.send}
-              className="px-4 py-2 rounded-lg bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/30 text-sm hover:bg-[var(--accent)]/20 transition-colors"
-            >
-              {dict.send}
-            </button>
+            <div className="flex gap-2">
+              <input
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={handleKeyDown}
+                placeholder={dict.placeholder}
+                className="flex-1 bg-[var(--bg-primary)] border border-[var(--border)] rounded-md px-2 py-1 sm:px-3 sm:py-2 text-sm text-[var(--text-primary)] placeholder-[var(--text-muted)] focus:outline-none focus:border-[var(--accent)]/50"
+              />
+              <button
+                onClick={handleSend}
+                aria-label={dict.send}
+                className="px-3 py-1 sm:px-4 sm:py-2 rounded-lg bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/30 text-sm hover:bg-[var(--accent)]/20 transition-colors"
+              >
+                {dict.send}
+              </button>
+            </div>
           </div>
-        </div>
       )}
 
       <div className={`${fullHeight ? "p-2 border-t border-[var(--border)]" : "mt-6"}`}>

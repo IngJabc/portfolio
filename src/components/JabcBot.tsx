@@ -19,6 +19,32 @@ export default function JabcBot() {
     return () => {};
   }, []);
 
+  // lock background scroll when the chat panel is open
+  useEffect(() => {
+    if (!open) return;
+
+    const scrollY = typeof window !== "undefined" ? window.scrollY || window.pageYOffset : 0;
+    const originalOverflow = document.body.style.overflow;
+    const originalPosition = document.body.style.position;
+    const originalTop = document.body.style.top;
+    const originalWidth = document.body.style.width;
+
+    // Prevent background scroll. Use fixed positioning to handle iOS Safari properly.
+    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%";
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      document.body.style.position = originalPosition;
+      document.body.style.top = originalTop;
+      document.body.style.width = originalWidth;
+      // restore scroll position
+      window.scrollTo(0, scrollY);
+    };
+  }, [open]);
+
   const handleNavigate = (path: string) => {
     setOpen(false);
     router.push(path);
@@ -49,12 +75,10 @@ export default function JabcBot() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.18 }}
-            className="pointer-events-auto fixed bottom-20 right-6 z-50 w-[calc(100vw-24px)] sm:w-[420px] h-[92vh] sm:h-[600px]"
+            className="pointer-events-auto fixed z-50 top-[calc(env(safe-area-inset-top,0px)+72px)] bottom-[80px] left-3 right-3 sm:top-auto sm:bottom-20 sm:left-auto sm:right-6 sm:w-[420px] sm:h-[600px]"
           >
             <div className="flex flex-col h-full glass-panel border border-[var(--border)]">
-              <div className="flex-1 overflow-hidden">
-                <AIChat fullHeight onClose={() => setOpen(false)} />
-              </div>
+              <AIChat fullHeight onClose={() => setOpen(false)} />
 
               <div className="p-2 border-t border-[var(--border)] bg-[var(--bg-primary)] flex gap-2 items-center">
                 <button
