@@ -40,6 +40,14 @@ function findAnswer(query: string, locale: "en" | "es"): string {
   const q = query.toLowerCase();
   const dict = dictionary[locale].ai.answers;
 
+  if (q.includes("dispon") || q.includes("availab") || q.includes("freelance")) {
+    return dict.availability;
+  }
+
+  if (q.includes("fintech") || q.includes("financi")) {
+    return dict.fintech;
+  }
+
   if (q.includes("proyecto") || q.includes("project") || q.includes("construido") || q.includes("built") || q.includes("ha hecho") || q.includes("made")) {
     const list = knowledgeBase.projects
       .map((p) => `• ${p.title} (${p.type}): ${p.problem.slice(0, 100)}... [${p.url}]`)
@@ -82,7 +90,7 @@ function findAnswer(query: string, locale: "en" | "es"): string {
   return dict.fallback;
 }
 
-export default function AIChat() {
+export default function AIChat({ fullHeight = false, onClose }: { fullHeight?: boolean; onClose?: () => void }) {
   const { locale } = useLocaleContext();
   const lang = locale as "en" | "es";
   const dict = dictionary[lang].ai;
@@ -141,40 +149,72 @@ export default function AIChat() {
 
   const examples = dict.examples;
 
+  // When example chip clicked, send automatically
+  const handleExampleSend = (ex: string) => {
+    setInput(ex);
+    if (!ex.trim()) return;
+    const query = ex;
+    const userMsg: Message = { role: "user", content: query };
+    setMessages((prev) => [...prev, userMsg]);
+    setInput("");
+    setIsTyping(true);
+
+    setTimeout(() => {
+      const answer = findAnswer(query, lang);
+      setMessages((prev) => [...prev, { role: "assistant", content: answer, query }]);
+      setIsTyping(false);
+    }, 600 + Math.random() * 600);
+  };
+
   return (
-    <div>
-      <div className="flex items-center gap-2 mb-4">
-        <button
-          onClick={() => setMode("terminal")}
-          className={`px-3 py-1 text-xs rounded-md transition-colors ${
-            mode === "terminal"
-              ? "bg-[var(--accent)]/20 text-[var(--accent)] border border-[var(--accent)]/30"
-              : "bg-[var(--bg-elevated)] text-[var(--text-secondary)] border border-[var(--border)]"
-          }`}
-        >
-          {dict.terminal}
-        </button>
-        <button
-          onClick={() => setMode("bubbles")}
-          className={`px-3 py-1 text-xs rounded-md transition-colors ${
-            mode === "bubbles"
-              ? "bg-[var(--accent)]/20 text-[var(--accent)] border border-[var(--accent)]/30"
-              : "bg-[var(--bg-elevated)] text-[var(--text-secondary)] border border-[var(--border)]"
-          }`}
-        >
-          {dict.chat}
-        </button>
-      </div>
+    <div className={`${fullHeight ? "flex flex-col h-full" : ""}`}>
+      {!fullHeight && (
+        <div className="flex items-center gap-2 mb-4" role="radiogroup" aria-label="Chat display mode">
+          <button
+            onClick={() => setMode("terminal")}
+            role="radio"
+            aria-checked={mode === "terminal"}
+            aria-label={`${dict.terminal} ${mode === "terminal" ? "(active)" : ""}`}
+            className={`px-3 py-1 text-xs rounded-md transition-colors ${
+              mode === "terminal"
+                ? "bg-[var(--accent)]/20 text-[var(--accent)] border border-[var(--accent)]/30"
+                : "bg-[var(--bg-elevated)] text-[var(--text-secondary)] border border-[var(--border)]"
+            }`}
+          >
+            {dict.terminal}
+          </button>
+          <button
+            onClick={() => setMode("bubbles")}
+            role="radio"
+            aria-checked={mode === "bubbles"}
+            aria-label={`${dict.chat} ${mode === "bubbles" ? "(active)" : ""}`}
+            className={`px-3 py-1 text-xs rounded-md transition-colors ${
+              mode === "bubbles"
+                ? "bg-[var(--accent)]/20 text-[var(--accent)] border border-[var(--accent)]/30"
+                : "bg-[var(--bg-elevated)] text-[var(--text-secondary)] border border-[var(--border)]"
+            }`}
+          >
+            {dict.chat}
+          </button>
+        </div>
+      )}
 
       {mode === "terminal" ? (
-        <div className="glass-panel overflow-hidden">
-          <div className="bg-[var(--bg-primary)]/80 px-4 py-2 border-b border-[var(--border)] flex items-center gap-2">
-            <div className="w-2.5 h-2.5 rounded-full bg-[var(--success)]" />
-            <div className="w-2.5 h-2.5 rounded-full bg-[var(--warning)]" />
-            <div className="w-2.5 h-2.5 rounded-full bg-[var(--error)]" />
-            <span className="text-xs text-[var(--text-muted)] font-mono ml-2">ai-assistant@bonilla:~$</span>
+        <div className={`glass-panel overflow-hidden ${fullHeight ? "flex flex-col h-full" : ""}`}>
+          <div className="bg-[var(--bg-primary)]/80 px-4 py-2 border-b border-[var(--border)] flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="w-2.5 h-2.5 rounded-full bg-[var(--success)]" />
+              <div className="w-2.5 h-2.5 rounded-full bg-[var(--warning)]" />
+              <div className="w-2.5 h-2.5 rounded-full bg-[var(--error)]" />
+              <span className="text-xs text-[var(--text-muted)] font-mono ml-2">jabcbot@bonilla:~$</span>
+            </div>
+            {onClose && (
+              <button onClick={onClose} className="text-xs text-[var(--text-muted)] hover:text-[var(--text-primary)] font-mono">
+                [x]
+              </button>
+            )}
           </div>
-          <div className="p-4 font-mono text-sm max-h-[500px] overflow-y-auto space-y-3">
+          <div className={`${fullHeight ? "p-3 font-mono text-sm flex-1 overflow-y-auto space-y-3 min-h-0" : "p-4 font-mono text-sm max-h-[500px] overflow-y-auto space-y-3"}`}>
             {messages.map((msg, i) => (
               <div key={i} className={msg.role === "user" ? "text-[var(--text-secondary)]" : "text-[var(--text-primary)]"}>
                 {msg.role === "user" ? (
@@ -195,7 +235,7 @@ export default function AIChat() {
             )}
             <div ref={messagesEndRef} />
           </div>
-          <div className="border-t border-[var(--border)] p-4">
+          <div className={`${fullHeight ? "border-t border-[var(--border)] p-3" : "border-t border-[var(--border)] p-4"}`}>
             <div className="flex gap-2">
               <input
                 value={input}
@@ -206,6 +246,7 @@ export default function AIChat() {
               />
               <button
                 onClick={handleSend}
+                aria-label={dict.send}
                 className="px-4 py-2 rounded-lg bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/30 text-sm hover:bg-[var(--accent)]/20 transition-colors"
               >
                 {dict.send}
@@ -214,8 +255,8 @@ export default function AIChat() {
           </div>
         </div>
       ) : (
-        <div className="glass-panel p-4">
-          <div className="max-h-[500px] overflow-y-auto space-y-4 mb-4">
+        <div className={`glass-panel p-4 ${fullHeight ? "flex flex-col h-full" : ""}`}>
+          <div className={`${fullHeight ? "flex-1 overflow-auto space-y-4 mb-4" : "max-h-[500px] overflow-y-auto space-y-4 mb-4"}`}>
             {messages.map((msg, i) => (
               <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                 <div
@@ -248,6 +289,7 @@ export default function AIChat() {
             />
             <button
               onClick={handleSend}
+              aria-label={dict.send}
               className="px-4 py-2 rounded-lg bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/30 text-sm hover:bg-[var(--accent)]/20 transition-colors"
             >
               {dict.send}
@@ -256,19 +298,24 @@ export default function AIChat() {
         </div>
       )}
 
-      <div className="mt-6">
-        <p className="text-xs text-[var(--text-muted)] font-mono mb-2">{dict.exampleQuestions}</p>
-        <div className="flex flex-wrap gap-2">
+      <div className={`${fullHeight ? "p-2 border-t border-[var(--border)]" : "mt-6"}`}>
+        <p className="text-xs text-[var(--text-muted)] font-mono mb-1.5">{dict.exampleQuestions}</p>
+        <div className="flex flex-wrap gap-1.5">
           {examples.map((ex, i) => (
             <button
               key={i}
-              onClick={() => { setInput(ex); }}
-              className="px-3 py-1.5 text-xs rounded-md bg-[var(--bg-elevated)] text-[var(--text-secondary)] border border-[var(--border)] hover:border-[var(--accent)]/30 hover:text-[var(--text-primary)] transition-colors"
+              onClick={() => handleExampleSend(ex)}
+              className="px-2 py-1 text-xs rounded-md bg-[var(--bg-elevated)] text-[var(--text-secondary)] border border-[var(--border)] hover:border-[var(--accent)]/30 hover:text-[var(--text-primary)] transition-colors"
             >
               {ex}
             </button>
           ))}
         </div>
+        {!fullHeight && (
+          <p className="text-[10px] text-[var(--text-muted)] font-mono mt-3 italic">
+            {dict.disclaimer}
+          </p>
+        )}
       </div>
     </div>
   );

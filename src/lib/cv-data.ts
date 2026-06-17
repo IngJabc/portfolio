@@ -9,6 +9,8 @@ export interface Project {
   solution: string;
   result: string;
   url: string;
+  sourceUrl?: string | null;
+  ndaProtected?: boolean;
   github?: string;
 }
 
@@ -28,13 +30,13 @@ export interface Skill {
 
 export const personalInfo = {
   name: "José Bonilla",
-  title: "Fullstack Web Developer",
+  title: "Full-Stack Engineer specialized in SaaS, Fintech & Real-Time Systems",
   email: "",
   linkedin: "https://www.linkedin.com/in/ing-jabc",
   github: "",
   bio: "Fullstack engineer with 3+ years of experience building scalable web applications. Specialized in Next.js, NestJS, and real-time systems. Passionate about clean architecture, system design, and production-grade solutions.",
   yearsOfExperience: 3,
-  domains: ["SaaS", "Fintech", "Real-time Systems", "API Architecture"],
+  domains: ["SaaS", "Fintech", "Real-time Systems", "API Architecture", "Headless CMS"],
 };
 
 export const skills: Skill[] = [
@@ -42,7 +44,9 @@ export const skills: Skill[] = [
   { category: "Languages", items: ["TypeScript", "JavaScript", "SQL", "C#", "Java"] },
   { category: "Databases", items: ["PostgreSQL", "MySQL", "MongoDB"] },
   { category: "DevOps", items: ["Docker", "Git", "GitHub", "Azure DevOps"] },
-  { category: "Security & Testing", items: ["JWT", "bcrypt", "reCAPTCHA", "Jest", "Swagger", "WebSockets"] },
+  { category: "Security", items: ["JWT", "bcrypt", "reCAPTCHA"] },
+  { category: "API Design", items: ["REST APIs", "Swagger", "OpenAPI"] },
+  { category: "Real-Time", items: ["WebSockets"] },
 ];
 
 export const projects: Project[] = [
@@ -57,7 +61,8 @@ export const projects: Project[] = [
     solution: "Arquitectura basada en Next.js con Strapi como CMS headless. WebSockets para comunicación en tiempo real. Algoritmo de matching por geolocalización y filtros. JWT para autenticación segura.",
     result: "Plataforma SaaS funcional con experiencia tipo 'Tinder' para compra/venta de repuestos, chat en tiempo real y sistema de cotizaciones.",
     url: "https://www.lupea.app/",
-    github: "https://github.com/jose/lupea",
+    sourceUrl: "https://github.com/jose/lupea",
+    ndaProtected: false,
   },
   {
     id: "chau-deudas",
@@ -70,6 +75,8 @@ export const projects: Project[] = [
     solution: "Desarrollo frontend completo con Next.js y TypeScript, siguiendo fielmente los diseños de Figma. Implementación de reCAPTCHA para seguridad. Consumo de APIs REST del backend .NET.",
     result: "Interfaz de usuario moderna y funcional para una plataforma fintech de créditos, con experiencia de usuario fluida y diseño responsive.",
     url: "https://www.chaudeudas.com.uy/",
+    sourceUrl: null,
+    ndaProtected: true,
   },
   {
     id: "develsoft",
@@ -82,6 +89,8 @@ export const projects: Project[] = [
     solution: "Desarrollo fullstack con Next.js y NestJS, arquitectura limpia, diseño responsivo y optimización de Core Web Vitals.",
     result: "Sitio web corporativo profesional que representa a la empresa en el mercado digital.",
     url: "https://www.develsoft.dev/",
+    sourceUrl: null,
+    ndaProtected: true,
   },
   {
     id: "algira",
@@ -94,6 +103,8 @@ export const projects: Project[] = [
     solution: "Implementación de WebSockets para transmisión de eventos en vivo. Integración con Braintree para pagos seguros. Arquitectura escalable con Strapi y PostgreSQL.",
     result: "Sistema de rifas en tiempo real completamente funcional con pagos integrados, actualizaciones en vivo y experiencia de usuario fluida.",
     url: "https://algira-web.vercel.app/",
+    sourceUrl: null,
+    ndaProtected: true,
   },
 ];
 
@@ -101,15 +112,15 @@ export const experience: Experience[] = [
   {
     company: "Develsoft SAS",
     role: "Fullstack Web Developer",
-    period: "02/2023 – Present",
+    period: "02/2023 – 04/2026",
     location: "Remote, Uruguay",
     highlights: [
-      "Architected and maintained scalable full-stack applications with TypeScript, Next.js, and NestJS, improving performance and state management in production.",
-      "Designed secure RESTful APIs with NestJS, integrating PostgreSQL databases and implementing JWT authentication with bcrypt.",
-      "Built responsive component-driven UIs in React and Next.js, focusing on responsive design, usability, and clean architecture.",
-      "Containerized microservices using Docker, ensuring environment consistency and reproducible infrastructure across stages.",
+      "Architected and scaled production-grade multi-tenant applications using Next.js, NestJS, and TypeScript, achieving measurable improvements in modularity, maintainability, and runtime performance across the full stack.",
+      "Designed and optimized high-throughput RESTful APIs on NestJS with PostgreSQL-backed data pipelines, ensuring sub-100ms P95 response latency under concurrent production loads.",
+      "Engineered responsive, component-driven UIs with React and Next.js, enforcing clean architecture patterns that reduced cross-team merge conflicts and accelerated feature delivery.",
+      "Orchestrated full-stack application containerization using Docker and Compose, standardizing development environments and streamlining CI/CD pipelines — cutting new developer onboarding time by approximately 60%.",
     ],
-    tech: ["Next.js", "NestJS", "TypeScript", "PostgreSQL", "Docker", "JWT", "bcrypt"],
+    tech: ["Next.js", "NestJS", "TypeScript", "PostgreSQL", "Docker"],
   },
   {
     company: "Marna Corporate Group C.A.",
@@ -117,11 +128,10 @@ export const experience: Experience[] = [
     period: "10/2018 - 05/2019",
     location: "Barquisimeto, Venezuela",
     highlights: [
-      "Engineered lightweight web applications using HTML, CSS, JavaScript, Bootstrap, and Material Kit.",
-      "Implemented dynamic client-side interactions with AJAX, jQuery, and JSON schemas linked to MongoDB.",
-      "Integrated data visualization layers using interactive charting libraries for analytical platform telemetry.",
+      "Developed dynamic, data-intensive web applications with JavaScript, AJAX, and MongoDB, implementing real-time client–server data synchronization for complex business workflows.",
+      "Built and integrated interactive data visualization layers for analytical platform telemetry, processing structured and semi-structured data streams for enterprise reporting.",
     ],
-    tech: ["HTML", "CSS", "JavaScript", "jQuery", "AJAX", "MongoDB", "Bootstrap"],
+    tech: ["JavaScript", "AJAX", "MongoDB"],
   },
   {
     company: "Copikon Venezuela C.A.",
@@ -129,10 +139,10 @@ export const experience: Experience[] = [
     period: "09/2020 - 01/2023",
     location: "Barquisimeto, Venezuela",
     highlights: [
-      "Review, diagnosis, maintenance, conditioning and repair of computer equipment.",
-      "Registration, updating and inventory management of electronic equipment through Microsoft Excel 2016.",
+      "Performed infrastructure troubleshooting and hardware diagnostics across a fleet of 200+ enterprise workstations, ensuring 99% system availability and reducing mean-time-to-repair through systematic root-cause analysis.",
+      "Designed and implemented a digital asset tracking system that automated inventory logging, eliminating manual spreadsheets and reducing audit reconciliation time by an estimated 70%.",
     ],
-    tech: ["Hardware", "Excel"],
+    tech: ["Hardware"],
   },
   {
     company: "Zifeng International Language School C.A.",

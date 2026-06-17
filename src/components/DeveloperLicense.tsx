@@ -9,24 +9,10 @@ interface Category {
   level: number;
 }
 
-const categories: Category[] = [
-  { label: "Frontend", items: "React, Next.js", level: 0.85 },
-  { label: "Backend", items: "NestJS, Node.js, Strapi", level: 0.8 },
-  { label: "Languages", items: "TypeScript, JavaScript, C#, Java, SQL", level: 0.75 },
-  { label: "Databases", items: "PostgreSQL, MySQL, MongoDB", level: 0.7 },
-  { label: "DevOps", items: "Docker, Git, Azure", level: 0.5 },
-  { label: "Security", items: "JWT, bcrypt, Swagger", level: 0.65 },
-];
-
-const N = categories.length;
-const cx = 80;
-const cy = 80;
-const r = 65;
-
-function radarPoints(values: number[]): string {
+function radarPoints(values: number[], n: number, cx: number, cy: number, r: number): string {
   return values
     .map((v, i) => {
-      const angle = (i * 2 * Math.PI) / N - Math.PI / 2;
+      const angle = (i * 2 * Math.PI) / n - Math.PI / 2;
       const x = cx + v * r * Math.cos(angle);
       const y = cy + v * r * Math.sin(angle);
       return `${x},${y}`;
@@ -34,9 +20,14 @@ function radarPoints(values: number[]): string {
     .join(" ");
 }
 
-function axisPoints(): { x: number; y: number; label: string }[] {
-  return categories.map((cat, i) => {
-    const angle = (i * 2 * Math.PI) / N - Math.PI / 2;
+function axisPoints(
+  cats: Category[],
+  cx: number,
+  cy: number,
+  r: number
+): { x: number; y: number; label: string }[] {
+  return cats.map((cat, i) => {
+    const angle = (i * 2 * Math.PI) / cats.length - Math.PI / 2;
     return {
       x: cx + (r + 18) * Math.cos(angle),
       y: cy + (r + 18) * Math.sin(angle),
@@ -48,10 +39,25 @@ function axisPoints(): { x: number; y: number; label: string }[] {
 const gridLevels = [0.25, 0.5, 0.75, 1];
 
 export default function DeveloperLicense() {
-  const { locale } = useLocaleContext();
+  const { locale, tRaw } = useLocaleContext();
+  const axisLabels = (tRaw("developerLicense", "axisLabels") || {}) as Record<string, string>;
+
+  const categories: Category[] = [
+    { label: axisLabels.frontendEng || "Frontend Engineering", items: "React, Next.js", level: 0.85 },
+    { label: axisLabels.backendSys || "Backend Systems", items: "NestJS, Node.js, Strapi", level: 0.8 },
+    { label: axisLabels.apiArch || "API Architecture", items: "TypeScript, JavaScript, C#, Java, SQL", level: 0.75 },
+    { label: axisLabels.databases || "Databases", items: "PostgreSQL, MySQL, MongoDB", level: 0.7 },
+    { label: axisLabels.cloudDevOps || "Cloud & DevOps", items: "Docker, Git, Azure", level: 0.5 },
+    { label: axisLabels.security || "Security", items: "JWT, bcrypt, Swagger", level: 0.65 },
+  ];
+
+  const N = categories.length;
+  const cx = 80;
+  const cy = 80;
+  const r = 65;
 
   const data = categories.map((c) => c.level);
-  const axes = axisPoints();
+  const axes = axisPoints(categories, cx, cy, r);
 
   return (
     <div className="mt-8">
@@ -120,7 +126,7 @@ export default function DeveloperLicense() {
                 {gridLevels.map((level) => (
                   <polygon
                     key={level}
-                    points={radarPoints(categories.map(() => level))}
+                    points={radarPoints(categories.map(() => level), N, cx, cy, r)}
                     fill="none"
                     stroke="var(--border)"
                     strokeWidth={0.5}
@@ -147,7 +153,7 @@ export default function DeveloperLicense() {
                 })}
 
                 <polygon
-                  points={radarPoints(data)}
+                  points={radarPoints(data, N, cx, cy, r)}
                   fill="var(--accent)"
                   fillOpacity={0.15}
                   stroke="var(--accent)"
@@ -181,22 +187,33 @@ export default function DeveloperLicense() {
           </div>
         </div>
 
-        <div className="mt-6 pt-4 border-t border-[var(--border)] grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
-          {categories.map((cat) => (
-            <div key={cat.label}>
-              <div className="flex items-center justify-between mb-0.5">
-                <span className="text-[10px] font-mono text-[var(--text-muted)]">{cat.label}</span>
-                <span className="text-[10px] font-mono text-[var(--accent)]">{Math.round(cat.level * 100)}%</span>
-              </div>
-              <div className="h-1 rounded-full bg-[var(--border)] overflow-hidden">
-                <div
-                  className="h-full rounded-full bg-[var(--accent)] transition-all duration-1000"
-                  style={{ width: `${cat.level * 100}%` }}
-                />
-              </div>
-              <p className="text-[9px] text-[var(--text-secondary)] mt-0.5 truncate">{cat.items}</p>
-            </div>
-          ))}
+        <div className="mt-6 pt-4 border-t border-[var(--border)]">
+          <p className="text-[10px] text-[var(--text-muted)] font-mono mb-3">
+            {locale === "en" ? "TECHNOLOGY EXPERIENCE" : "EXPERIENCIA EN TECNOLOGÍAS"}
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {[
+              { name: "TypeScript", years: 3 },
+              { name: "Next.js", years: 3 },
+              { name: "React", years: 3 },
+              { name: "Node.js", years: 3 },
+              { name: "NestJS", years: 2 },
+              { name: "Strapi", years: 2 },
+              { name: "PostgreSQL", years: 3 },
+              { name: "Docker", years: 2 },
+              { name: "JavaScript", years: 4 },
+            ].map((tech) => (
+              <span
+                key={tech.name}
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] rounded-md bg-[var(--bg-elevated)] text-[var(--text-secondary)] border border-[var(--border)] font-mono"
+              >
+                {tech.name}
+                <span className="text-[var(--text-muted)]">
+                  {tech.years}{locale === "en" ? "y" : "a"}
+                </span>
+              </span>
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@ const actions = [
   { href: "/skills", labelKey: "viewSkills", icon: "🧰", descKey: "descSkills" },
   { href: "/projects", labelKey: "viewProjects", icon: "📁", descKey: "descProjects" },
   { href: "/experience", labelKey: "viewExperience", icon: "📈", descKey: "descExperience" },
-  { href: "/ai", labelKey: "aiAssistant", icon: "🤖", descKey: "descAI" },
+  // AI assistant moved to global floating widget (JabcBot)
   { href: "/contact", labelKey: "contact", icon: "📬", descKey: "descContact" },
 ];
 
