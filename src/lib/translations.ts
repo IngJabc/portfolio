@@ -13,7 +13,7 @@ export const dictionary = {
       switchToDark: "Switch to dark mode",
     },
     jabcbot: {
-      open: "> JabcBot",
+      open: ">> JabcBot",
       title: "JabcBot v1.0 — AI Assistant",
       buttonOpen: "Open JabcBot",
       buttonClose: "Close JabcBot",
@@ -22,7 +22,7 @@ export const dictionary = {
       footerContact: "→ Go to contact",
     },
     boot: {
-      title: "Fullstack Web Developer",
+      title: "Web Application Engineer · AI-First",
       loading: "Initializing system...",
       kernel: "Initializing kernel...",
       systemModules: "Loading system modules...",
@@ -32,7 +32,8 @@ export const dictionary = {
       loadingEngine: "Loading portfolio engine...",
       systemReady: "System ready.",
       skip: "Skip → Dashboard",
-      valueProp: "Full-Stack engineer building scalable SaaS, Fintech and real-time systems.",
+      valueProp:
+        "Web Application Engineer · AI-First building scalable SaaS, Fintech and real-time systems.",
       viewProjects: "View Projects",
       contact: "Contact",
     },
@@ -42,7 +43,7 @@ export const dictionary = {
       navigation: "Navigation",
       systemOverview: "system overview",
       systemOverviewDesc:
-        "Fullstack Web Developer with 3+ years of production experience building scalable SaaS, Fintech, and real-time systems. Specialized in Next.js, NestJS, TypeScript, PostgreSQL, and clean architecture.",
+        "Web Application Engineer with 3+ years of production experience building scalable SaaS, Fintech, and real-time systems. Specialized in Next.js, NestJS, TypeScript, PostgreSQL, and clean architecture.",
       viewSkills: "View Skills",
       viewProjects: "View Projects",
       viewExperience: "View Experience",
@@ -54,6 +55,36 @@ export const dictionary = {
       descAI: "Ask about my profile with AI",
       descContact: "Let's connect for your next project",
       cta: "Explore Projects",
+      impact: {
+        label: "cat ~/impact --metrics",
+        stats: {
+          projects: "Projects delivered",
+          experience: "Years of experience",
+          technologies: "Technologies mastered",
+          remote: "Remote available",
+        },
+        highlights: {
+          saas: {
+            title: "Scalable SaaS Architecture",
+            desc: "Building systems from scratch: authentication, REST APIs, databases, and production deployment.",
+          },
+          ai: {
+            title: "AI-Accelerated Delivery",
+            desc: "AI-First workflow that reduces development time without sacrificing quality or architecture.",
+          },
+          web: {
+            title: "Web apps & landing pages",
+            desc: "From corporate sites and high-impact landing pages to full production-ready web applications.",
+          },
+        },
+        timeline: {
+          label: "cat ~/projects/timeline --impact",
+          develsoft: "Corporate site · Consolidated digital presence",
+          lupea: "Construction SaaS · Real-time project management",
+          chaudeudas: "Fintech · Automated debt settlement",
+          algira: "Real-time bookings · Braintree integrated payments",
+        },
+      },
     },
     projects: {
       title: "Projects",
@@ -68,11 +99,13 @@ export const dictionary = {
       source: "Source",
       sourceAria: "View source repository",
       enterpriseBadge: "🔒 Enterprise Codebases — NDA Protected",
-      enterpriseTooltip: "Repository is company-owned and not publicly available due to confidentiality agreements.",
+      enterpriseTooltip:
+        "Repository is company-owned and not publicly available due to confidentiality agreements.",
       enterpriseAria: "Enterprise repository, NDA protected (not public)",
       content: {
         lupea: {
-          short: "SaaS marketplace connecting automotive parts buyers and suppliers through real-time geolocated matching.",
+          short:
+            "SaaS marketplace connecting automotive parts buyers and suppliers through real-time geolocated matching.",
           problem:
             "The automotive parts procurement market suffered from heavy fragmentation and critical latency. Buyers wasted hours in manual phone-sourcing, while local suppliers lacked an automated, geolocated channel to liquidate inventory efficiently, leading to lost revenue on both sides.",
           challenges:
@@ -83,7 +116,8 @@ export const dictionary = {
             "Delivered a production-ready, multi-tenant SaaS platform. Achieved sub-100ms latency for real-time bid updates and automated quotation routing. The intuitive 'match-and-bid' UX reduced the average parts procurement cycle from hours to under 5 minutes during staging tests.",
         },
         "chau-deudas": {
-          short: "Fintech platform for personal debt consolidation and credit management with .NET Core backend.",
+          short:
+            "Fintech platform for personal debt consolidation and credit management with .NET Core backend.",
           problem:
             "The personal debt consolidation market lacked a seamless, secure digital channel connecting users to regulated credit products. Fragmented onboarding flows, inconsistent financial data, and opaque approval processes created high drop-off rates and low trust in digital lending.",
           challenges:
@@ -94,7 +128,8 @@ export const dictionary = {
             "Delivered a production-grade fintech frontend with robust security posture. Achieved consistent data synchronization with the backend, and the responsive, accessible interface improved usability benchmarks for a traditionally high-anxiety financial workflow.",
         },
         develsoft: {
-          short: "Corporate website for a software development consultancy built with Next.js and NestJS.",
+          short:
+            "Corporate website for a software development consultancy built with Next.js and NestJS.",
           problem:
             "The company, a software development consultancy, needed a digital presence that would convey technical authority and architectural maturity to enterprise clients, replacing a static and outdated landing page.",
           challenges:
@@ -105,7 +140,8 @@ export const dictionary = {
             "Launched a production website that achieved sub-2s LCP and 95+ Lighthouse performance scores. The end-to-end TypeScript stack reduced regression bugs by an estimated 40% during content updates, providing the client with a low-maintenance, enterprise-grade web presence.",
         },
         algira: {
-          short: "Real-time raffle and ticketing platform with live draw streaming and Braintree payment integration.",
+          short:
+            "Real-time raffle and ticketing platform with live draw streaming and Braintree payment integration.",
           problem:
             "The event-based fundraising sector in the region operated on paper tickets and manual draws, creating low trust, limited reach, and high operational overhead for organizers.",
           challenges:
@@ -149,7 +185,8 @@ export const dictionary = {
       chat: "Chat",
       send: "Send",
       exampleQuestions: "// example questions",
-      disclaimer: "This assistant is AI-powered and answers questions based on my professional profile.",
+      disclaimer:
+        "This assistant is AI-powered and answers questions based on my professional profile.",
       greeting:
         "Hello! I'm the AI assistant for **{name}**. Ask me anything about his experience, projects, skills, or background.",
       answers: {
@@ -160,8 +197,7 @@ export const dictionary = {
         stack: "**Tech Stack & Skills:**\n\n{categories}",
         architecture:
           "**System Architecture:**\n\nHe has architected full-stack systems including:\n• SaaS marketplace with real-time matching algorithms\n• Fintech platforms with financial API integration\n• Real-time raffle systems with payment gateways\n• Containerized microservices with Docker\n• Clean architecture patterns with scalable PostgreSQL schemas",
-        experience:
-          "**Professional Experience:**\n\n{list}",
+        experience: "**Professional Experience:**\n\n{list}",
         contact:
           "**Contact:**\n\nLinkedIn: {linkedin}\n\nClick to reveal email on the contact page.",
         level:
@@ -184,14 +220,18 @@ export const dictionary = {
       title: "Contact",
       subtitle: "contact --connect",
       email: "Email",
+      emailSubject: "Project Opportunity — José Bonilla",
       linkedin: "LinkedIn",
       github: "GitHub",
       schedule: "Schedule a Technical Call",
-      scheduleDesc: "Cal.com / Calendly",
+      scheduleDesc: "WhatsApp",
+      waMessage:
+        "Hi José! I'd like to schedule a technical call to discuss a project opportunity.",
       clickToReveal: "[Click to reveal]",
       copied: "Copied!",
       copyLabel: "Copy to clipboard",
-      orAskAI: "Looking for specific insights? Query my custom RAG AI Assistant about my engineering background.",
+      orAskAI:
+        "Looking for specific insights? Query my custom RAG AI Assistant about my engineering background.",
       aiAssistant: "AI Assistant",
       availability: "Available for freelance projects and remote positions.",
     },
@@ -226,7 +266,13 @@ export const dictionary = {
         apiDesign: "API DESIGN",
         realTime: "REAL-TIME SYSTEMS",
         headlessCMS: "HEADLESS CMS",
-        cmsItems: ["Strapi v5", "Content Architecture", "Role Management", "API Design", "Custom Workflows"],
+        cmsItems: [
+          "Strapi v5",
+          "Content Architecture",
+          "Role Management",
+          "API Design",
+          "Custom Workflows",
+        ],
       },
       level: {
         Basic: "Basic",
@@ -258,7 +304,7 @@ export const dictionary = {
       nameLabel: "Name",
       titleLabel: "Title",
       summary:
-        "Full-Stack engineer building scalable SaaS, Fintech and real-time systems. TypeScript across the full stack.",
+        "Web Application Engineer · AI-First building scalable SaaS, Fintech and real-time systems. TypeScript across the full stack.",
       uptimeLabel: "Uptime",
       domainsLabel: "Domains",
       locationLabel: "Location",
@@ -297,7 +343,7 @@ export const dictionary = {
       switchToDark: "Cambiar a modo oscuro",
     },
     boot: {
-      title: "Fullstack Web Developer",
+      title: "Web Application Engineer · AI-First",
       loading: "Inicializando sistema...",
       kernel: "Inicializando kernel...",
       systemModules: "Cargando módulos del sistema...",
@@ -307,7 +353,8 @@ export const dictionary = {
       loadingEngine: "Cargando motor del portfolio...",
       systemReady: "Sistema listo.",
       skip: "Saltar → Dashboard",
-      valueProp: "Ingeniero Full-Stack construyendo sistemas SaaS, Fintech y tiempo real escalables.",
+      valueProp:
+        "Web Application Engineer · AI-First construyendo sistemas SaaS, Fintech y tiempo real escalables.",
       viewProjects: "Ver Proyectos",
       contact: "Contacto",
     },
@@ -317,7 +364,7 @@ export const dictionary = {
       navigation: "Navegación",
       systemOverview: "resumen del sistema",
       systemOverviewDesc:
-        "Fullstack Web Developer con más de 3 años de experiencia en producción construyendo sistemas SaaS, Fintech y en tiempo real escalables. Especializado en Next.js, NestJS, TypeScript, PostgreSQL y arquitectura limpia.",
+        "Web Application Engineer · AI-First con más de 3 años de experiencia en producción construyendo sistemas SaaS, Fintech y en tiempo real escalables. Especializado en Next.js, NestJS, TypeScript, PostgreSQL y arquitectura limpia.",
       viewSkills: "Ver Habilidades",
       viewProjects: "Ver Proyectos",
       viewExperience: "Ver Experiencia",
@@ -329,6 +376,36 @@ export const dictionary = {
       descAI: "Pregunta sobre mi perfil con IA",
       descContact: "Conectemos para tu próximo proyecto",
       cta: "Explorar Proyectos",
+      impact: {
+        label: "cat ~/impact --metrics",
+        stats: {
+          projects: "Proyectos entregados",
+          experience: "Años de experiencia",
+          technologies: "Tecnologías dominadas",
+          remote: "Disponible remoto",
+        },
+        highlights: {
+          saas: {
+            title: "Arquitectura SaaS escalable",
+            desc: "Diseño sistemas desde cero: autenticación, APIs REST, base de datos y despliegue en producción.",
+          },
+          ai: {
+            title: "Entrega acelerada con IA",
+            desc: "Flujo de trabajo AI-First que reduce tiempos de desarrollo sin sacrificar calidad ni arquitectura.",
+          },
+          web: {
+            title: "Web apps & landing pages",
+            desc: "Desde sitios corporativos y landing pages de alto impacto hasta aplicaciones web completas listas para producción.",
+          },
+        },
+        timeline: {
+          label: "cat ~/projects/timeline --impact",
+          develsoft: "Sitio corporativo · Presencia digital consolidada",
+          lupea: "SaaS construcción · Gestión de obras en tiempo real",
+          chaudeudas: "Fintech · Liquidación automatizada de deudas",
+          algira: "Reservas real-time · Pagos integrados con Braintree",
+        },
+      },
     },
     projects: {
       title: "Proyectos",
@@ -343,11 +420,13 @@ export const dictionary = {
       source: "Código",
       sourceAria: "Ver repositorio de código",
       enterpriseBadge: "🔒 Código Empresarial — Protegido por NDA",
-      enterpriseTooltip: "El repositorio es propiedad de la empresa y no está disponible públicamente por acuerdos de confidencialidad.",
+      enterpriseTooltip:
+        "El repositorio es propiedad de la empresa y no está disponible públicamente por acuerdos de confidencialidad.",
       enterpriseAria: "Repositorio empresarial, protegido por NDA (no público)",
       content: {
         lupea: {
-          short: "Marketplace SaaS que conecta compradores y proveedores de repuestos automotrices mediante matching geolocalizado en tiempo real.",
+          short:
+            "Marketplace SaaS que conecta compradores y proveedores de repuestos automotrices mediante matching geolocalizado en tiempo real.",
           problem:
             "El mercado de compraventa de repuestos automotrices sufría una fragmentación severa y latencia crítica. Los compradores perdían horas en búsqueda telefónica manual, mientras los proveedores locales carecían de un canal automatizado y geolocalizado para liquidar inventario, generando pérdida de ingresos en ambos lados.",
           challenges:
@@ -358,7 +437,8 @@ export const dictionary = {
             "Entregué una plataforma SaaS multi-tenant lista para producción. Se logró latencia sub-100ms para actualizaciones de ofertas en tiempo real y enrutamiento automatizado de cotizaciones. La UX intuitiva de 'match-and-bid' redujo el ciclo promedio de adquisición de repuestos de horas a menos de 5 minutos durante pruebas de staging.",
         },
         "chau-deudas": {
-          short: "Plataforma fintech para consolidación de deudas y gestión de créditos personales con backend en .NET Core.",
+          short:
+            "Plataforma fintech para consolidación de deudas y gestión de créditos personales con backend en .NET Core.",
           problem:
             "El mercado de consolidación de deudas personales carecía de un canal digital seguro y fluido que conectara a usuarios con productos crediticios regulados. Flujos de onboarding fragmentados, datos financieros inconsistentes y procesos de aprobación opacos generaban altas tasas de abandono y baja confianza en el crédito digital.",
           challenges:
@@ -369,7 +449,8 @@ export const dictionary = {
             "Entregué un frontend fintech de grado profesional con una postura de seguridad robusta. Se logró sincronización consistente de datos con el backend, y la interfaz responsive y accesible mejoró los benchmarks de usabilidad para un flujo financiero tradicionalmente de alta ansiedad.",
         },
         develsoft: {
-          short: "Sitio web corporativo para una consultora de desarrollo de software construido con Next.js y NestJS.",
+          short:
+            "Sitio web corporativo para una consultora de desarrollo de software construido con Next.js y NestJS.",
           problem:
             "La empresa, una consultora de desarrollo de software, necesitaba una presencia digital que transmitiera autoridad técnica y madurez arquitectónica a clientes enterprise, reemplazando una landing page estática y desactualizada.",
           challenges:
@@ -380,7 +461,8 @@ export const dictionary = {
             "Lancé un sitio web en producción que logró LCP menor a 2s y puntajes Lighthouse superiores a 95. El stack TypeScript de extremo a extremo redujo bugs de regresión en un estimado de 40% durante actualizaciones de contenido, proporcionando al cliente una presencia web enterprise de bajo mantenimiento.",
         },
         algira: {
-          short: "Plataforma de sorteos y ticketing en tiempo real con streaming en vivo y pagos integrados vía Braintree.",
+          short:
+            "Plataforma de sorteos y ticketing en tiempo real con streaming en vivo y pagos integrados vía Braintree.",
           problem:
             "El sector de recaudación de fondos basado en eventos operaba con boletos en papel y sorteos manuales, generando baja confianza, alcance limitado y alta carga operativa para los organizadores.",
           challenges:
@@ -424,7 +506,8 @@ export const dictionary = {
       chat: "Chat",
       send: "Enviar",
       exampleQuestions: "// preguntas de ejemplo",
-      disclaimer: "Este asistente usa IA y responde preguntas basadas en mi perfil profesional.",
+      disclaimer:
+        "Este asistente usa IA y responde preguntas basadas en mi perfil profesional.",
       greeting:
         "¡Hola! Soy el asistente de IA de **{name}**. Pregúntame sobre su experiencia, proyectos, habilidades o trayectoria.",
       answers: {
@@ -435,8 +518,7 @@ export const dictionary = {
         stack: "**Stack Tecnológico y Habilidades:**\n\n{categories}",
         architecture:
           "**Arquitectura de Sistemas:**\n\nHa arquitectado sistemas full-stack incluyendo:\n• Marketplace SaaS con algoritmos de matching en tiempo real\n• Plataformas Fintech con integración de APIs financieras\n• Sistemas de sorteos en tiempo real con pasarelas de pago\n• Microservicios containerizados con Docker\n• Patrones de arquitectura limpia con esquemas PostgreSQL escalables",
-        experience:
-          "**Experiencia Profesional:**\n\n{list}",
+        experience: "**Experiencia Profesional:**\n\n{list}",
         contact:
           "**Contacto:**\n\nLinkedIn: {linkedin}\n\nHaz clic para revelar el email en la página de contacto.",
         level:
@@ -468,14 +550,18 @@ export const dictionary = {
       title: "Contacto",
       subtitle: "contacto --conectar",
       email: "Email",
+      emailSubject: "Oportunidad de Proyecto — José Bonilla",
       linkedin: "LinkedIn",
       github: "GitHub",
       schedule: "Agenda una llamada técnica",
-      scheduleDesc: "Cal.com / Calendly",
+      scheduleDesc: "WhatsApp",
+      waMessage:
+        "¡Hola José! Me gustaría agendar una llamada técnica para discutir un proyecto.",
       clickToReveal: "[Click para revelar]",
       copied: "¡Copiado!",
       copyLabel: "Copiar al portapapeles",
-      orAskAI: "¿Buscas información específica? Consulta mi RAG AI Assistant personalizado sobre mi perfil de ingeniería.",
+      orAskAI:
+        "¿Buscas información específica? Consulta mi RAG AI Assistant personalizado sobre mi perfil de ingeniería.",
       aiAssistant: "AI Assistant",
       availability: "Disponible para proyectos freelance y posiciones remotas.",
     },
@@ -548,7 +634,7 @@ export const dictionary = {
       nameLabel: "Nombre",
       titleLabel: "Título",
       summary:
-        "Ingeniero Full-Stack construyendo sistemas SaaS, Fintech y tiempo real escalables. TypeScript en todo el stack.",
+        "Web Application Engineer · AI-First construyendo sistemas SaaS, Fintech y tiempo real escalables. TypeScript en todo el stack.",
       uptimeLabel: "Disponibilidad",
       domainsLabel: "Dominios",
       locationLabel: "Ubicación",

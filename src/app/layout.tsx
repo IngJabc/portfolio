@@ -20,20 +20,20 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ing-jabc.vercel.app"),
-  title: "José Bonilla | Fullstack Web Developer",
-  description: "Fullstack Web Developer specializing in Next.js, NestJS, TypeScript and system architecture.",
-  icons: {},
+  title: "José Bonilla | Web Application Engineer · AI-First",
+  description: "Web Application Engineer building scalable web applications with Next.js, NestJS, TypeScript and modern system architecture.",
+  icons: [{ rel: "icon", url: "/favicon.ico" }],
   openGraph: {
-    title: "José Bonilla | Fullstack Web Developer",
-    description: "Fullstack developer specialized in Next.js, NestJS, TypeScript and system architecture.",
+    title: "José Bonilla | Web Application Engineer · AI-First",
+    description: "Web Application Engineer building scalable web applications with Next.js, NestJS, TypeScript and modern system architecture.",
     url: "https://ing-jabc.vercel.app",
     type: "website",
     images: [{ url: "/og-image.svg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "José Bonilla | Fullstack Web Developer",
-    description: "Fullstack developer specialized in Next.js, NestJS, TypeScript and system architecture.",
+    title: "José Bonilla | Web Application Engineer · AI-First",
+    description: "Web Application Engineer building scalable web applications with Next.js, NestJS, TypeScript and modern system architecture.",
   },
 };
 

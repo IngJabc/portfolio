@@ -8,7 +8,7 @@ export default function SkillsPage() {
 
   return (
     <div className="min-h-screen pt-20 pb-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="mb-8">
           <h1 className="text-2xl font-bold text-[var(--text-primary)]">{t("title")}</h1>
           <p className="text-[var(--text-secondary)] text-sm mt-1">/{">"} {t("subtitle")}</p>

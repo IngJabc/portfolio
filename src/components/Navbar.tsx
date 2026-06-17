@@ -52,13 +52,13 @@ export default function Navbar() {
             ))}
             <button
               onClick={() => setLocale(otherLocale)}
-              className="px-3 py-1.5 text-xs rounded-md bg-[var(--bg-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+              className="px-3 py-1.5 text-xs rounded-md bg-[var(--bg-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
             >
               {locale === "es" ? "EN" : "ES"}
             </button>
             <button
               onClick={toggleTheme}
-              className="px-3 py-1.5 text-xs rounded-md bg-[var(--bg-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+              className="px-3 py-1.5 text-xs rounded-md bg-[var(--bg-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
               title={theme === "dark" ? t("switchToLight") : t("switchToDark")}
             >
               {theme === "dark" ? "☀️" : "🌙"}
@@ -68,13 +68,13 @@ export default function Navbar() {
           <div className="flex md:hidden items-center gap-1.5">
             <button
               onClick={() => setLocale(otherLocale)}
-              className="px-2 py-1 text-xs rounded-md bg-[var(--bg-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+              className="px-2 py-1 text-xs rounded-md bg-[var(--bg-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
             >
               {locale === "es" ? "EN" : "ES"}
             </button>
             <button
               onClick={toggleTheme}
-              className="px-2 py-1 text-xs rounded-md bg-[var(--bg-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
+              className="px-2 py-1 text-xs rounded-md bg-[var(--bg-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
               title={theme === "dark" ? t("switchToLight") : t("switchToDark")}
             >
               {theme === "dark" ? "☀️" : "🌙"}
