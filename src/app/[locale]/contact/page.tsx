@@ -25,7 +25,7 @@ export default function ContactPage() {
           <div className="space-y-4">
             <ContactItem
               label={dict.email}
-              value="jose@example.com"
+              value="ingjosebonilla@gmail.com"
               copyable
               copiedText={dict.copied}
               copyLabel={dict.copyLabel}
