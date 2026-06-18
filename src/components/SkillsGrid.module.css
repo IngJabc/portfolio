@@ -63,6 +63,16 @@
   border-bottom: 1px solid var(--border);
 }
 
+.highlightGlow {
+  animation: highlightPulse 2s ease-out;
+}
+
+@keyframes highlightPulse {
+  0% { border-color: var(--accent); box-shadow: 0 0 20px color-mix(in srgb, var(--accent) 40%, transparent); }
+  30% { border-color: var(--accent); box-shadow: 0 0 30px color-mix(in srgb, var(--accent) 50%, transparent); }
+  100% { border-color: var(--glass-border); box-shadow: none; }
+}
+
 .categoryIcon {
   font-size: 1.125rem;
 }
@@ -94,7 +104,7 @@
 .skillName {
   font-size: 0.8125rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--accent);
   font-family: var(--font-mono);
 }
 

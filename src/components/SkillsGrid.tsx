@@ -1,9 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useSearchParams } from "next/navigation";
 import { useT, useLocaleContext } from "@/components/LocaleProvider";
 import { skillsData, type SkillCategory } from "@/lib/skills-data";
 import styles from "./SkillsGrid.module.css";
+import { useState, useEffect, useRef, Suspense } from "react";
 
 const levelClassMap: Record<string, string> = {
   Production: styles.levelProduction,
@@ -21,12 +23,36 @@ const stagger = {
   }),
 };
 
-export default function SkillsGrid() {
+function SkillsGridInner() {
   const t = useT("skills");
   const { locale, tRaw } = useLocaleContext();
   const categories: SkillCategory[] = skillsData[locale === "es" ? "es" : "en"];
+  const searchParams = useSearchParams();
+  const highlightTech = searchParams?.get("highlight");
+
+  const [highlighted, setHighlighted] = useState<string | null>(null);
+  const cardRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   const whatBuiltList = (tRaw("skills", "whatBuiltList") || []) as string[];
+
+  // Handle highlight from URL
+  useEffect(() => {
+    if (!highlightTech) return;
+
+    for (const cat of categories) {
+      const match = cat.skills.find(
+        (s) => s.name.toLowerCase() === highlightTech.toLowerCase()
+      );
+      if (match) {
+        setHighlighted(cat.id);
+        setTimeout(() => {
+          cardRefs.current[cat.id]?.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 100);
+        setTimeout(() => setHighlighted(null), 2500);
+        break;
+      }
+    }
+  }, [highlightTech, categories]);
 
   return (
     <div className={styles.container}>
@@ -48,7 +74,8 @@ export default function SkillsGrid() {
         {categories.map((cat, catIdx) => (
           <motion.div
             key={cat.id}
-            className={styles.categoryCard}
+            ref={(el) => { cardRefs.current[cat.id] = el; }}
+            className={`${styles.categoryCard} ${highlighted === cat.id ? styles.highlightGlow : ""}`}
             initial="hidden"
             animate="show"
             custom={catIdx + 1}
@@ -59,24 +86,26 @@ export default function SkillsGrid() {
               <h3 className={styles.categoryTitle}>{cat.id}</h3>
             </div>
 
-            {cat.skills.map((skill) => (
-              <div key={skill.name} className={styles.skillItem}>
-                <div className={styles.skillHeader}>
-                  <span className={styles.skillName}>{skill.name}</span>
-                  <span className={`${styles.levelBadge} ${levelClassMap[skill.level] || ""}`}>
-                    {t(`level.${skill.level}`)}
-                  </span>
-                </div>
-                <p className={styles.skillDescription}>{skill.description}</p>
-                <div className={styles.skillContext}>
-                  {skill.context.split(", ").map((ctx) => (
-                    <span key={ctx} className={styles.contextTag}>
-                      {ctx}
+            <div>
+              {cat.skills.map((skill) => (
+                <div key={skill.name} className={styles.skillItem}>
+                  <div className={styles.skillHeader}>
+                    <span className={styles.skillName}>{skill.name}</span>
+                    <span className={`${styles.levelBadge} ${levelClassMap[skill.level] || ""}`}>
+                      {t(`level.${skill.level}`)}
                     </span>
-                  ))}
+                  </div>
+                  <p className={styles.skillDescription}>{skill.description}</p>
+                  <div className={styles.skillContext}>
+                    {skill.context.split(", ").map((ctx) => (
+                      <span key={ctx} className={styles.contextTag}>
+                        {ctx}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </motion.div>
         ))}
       </div>
@@ -100,5 +129,13 @@ export default function SkillsGrid() {
         </div>
       </motion.div>
     </div>
+  );
+}
+
+export default function SkillsGrid() {
+  return (
+    <Suspense fallback={null}>
+      <SkillsGridInner />
+    </Suspense>
   );
 }

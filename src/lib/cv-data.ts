@@ -30,11 +30,11 @@ export interface Skill {
 
 export const personalInfo = {
   name: "José Bonilla",
-  title: "Web Application Engineer · AI-First",
+  title: "Full-Stack Engineer specialized in SaaS, Fintech & Real-Time Systems",
   email: "",
   linkedin: "https://www.linkedin.com/in/ing-jabc",
   github: "",
-  bio: "Web Application Engineer with 3+ years of experience building scalable web applications. Specialized in Next.js, NestJS, and real-time systems. Passionate about clean architecture, system design, and production-grade solutions.",
+  bio: "Fullstack engineer with 3+ years of experience building scalable web applications. Specialized in Next.js, NestJS, and real-time systems. Passionate about clean architecture, system design, and production-grade solutions.",
   yearsOfExperience: 3,
   domains: ["SaaS", "Fintech", "Real-time Systems", "API Architecture", "Headless CMS"],
 };
@@ -170,7 +170,7 @@ export const statusColors: Record<string, string> = {
   ONLINE: "#10B981",
   STABLE: "#3B82F6",
   OPTIMIZED: "#8B5CF6",
-  ACTIVE: "#06B6D4",
+  ACTIVE: "#0284C7",
   OPERATIONAL: "#F59E0B",
   CONNECTED: "#10B981",
 };

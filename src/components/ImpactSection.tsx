@@ -1,6 +1,7 @@
 "use client";
 
 import { useT } from "@/components/LocaleProvider";
+import { useRouter, usePathname } from "next/navigation";
 
 const stats = [
   { value: "4+", key: "stats.projects" },
@@ -31,22 +32,27 @@ const highlights = [
 ] as const;
 
 const timeline = [
-  { year: "2022", name: "Develsoft SAS", resultKey: "timeline.develsoft" },
-  { year: "2023", name: "LUPEA", resultKey: "timeline.lupea" },
+  { year: "2023", name: "Develsoft SAS", resultKey: "timeline.develsoft" },
   { year: "2024", name: "Chau Deudas", resultKey: "timeline.chaudeudas" },
-  { year: "2024", name: "Algira", resultKey: "timeline.algira" },
+  { year: "2025", name: "Algira", resultKey: "timeline.algira" },
+  { year: "2026", name: "LUPEA", resultKey: "timeline.lupea" },
 ] as const;
 
 export default function ImpactSection() {
   const t = useT("dashboard");
+  const router = useRouter();
+  const fullPath = usePathname();
+  const urlLocale = fullPath.split("/")[1] || "en";
+
+  const handleTechClick = (tech: string) => {
+    router.push(`/${urlLocale}/skills?highlight=${encodeURIComponent(tech)}`);
+  };
 
   return (
     <div className="mt-8">
       <div className="flex items-center gap-2 mb-4">
         <span className="text-xs font-mono text-[var(--accent)]">$</span>
-        <span className="text-xs font-mono text-[var(--text-secondary)]">
-          {t("impact.label")}
-        </span>
+        <span className="text-xs font-mono text-[var(--text-secondary)]">{t("impact.label")}</span>
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -74,12 +80,13 @@ export default function ImpactSection() {
             </p>
             <div className="flex flex-wrap gap-1.5 mt-auto pt-4">
               {h.tags.map((tag) => (
-                <span
+                <button
                   key={tag}
-                  className="px-1.5 py-0.5 text-[10px] rounded bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/20 font-mono"
+                  onClick={() => handleTechClick(tag)}
+                  className="badge"
                 >
                   {tag}
-                </span>
+                </button>
               ))}
             </div>
           </div>
@@ -88,9 +95,7 @@ export default function ImpactSection() {
 
       <div className="flex items-center gap-2 mb-4">
         <span className="text-xs font-mono text-[var(--accent)]">$</span>
-        <span className="text-xs font-mono text-[var(--text-secondary)]">
-          {t("impact.timeline.label")}
-        </span>
+        <span className="text-xs font-mono text-[var(--text-secondary)]">{t("impact.timeline.label")}</span>
       </div>
       <div className="glass-panel p-5 mt-4">
         <div className="relative">

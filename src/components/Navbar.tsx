@@ -34,7 +34,7 @@ export default function Navbar() {
           <Link href={`/${urlLocale}/dashboard`} className="flex items-baseline gap-2 group">
             <span className="text-lg font-bold text-[var(--accent)] tracking-tight">José Bonilla</span>
             <span className="hidden sm:inline text-[10px] font-mono text-[var(--text-muted)] group-hover:text-[var(--text-secondary)] transition-colors">
-              Web Application Engineer · AI-First
+              {t("subtitle")}
             </span>
           </Link>
 
@@ -52,13 +52,13 @@ export default function Navbar() {
             ))}
             <button
               onClick={() => setLocale(otherLocale)}
-              className="px-3 py-1.5 text-xs rounded-md bg-[var(--bg-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
+              className="px-3 py-1.5 text-xs rounded-md bg-[var(--bg-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
             >
               {locale === "es" ? "EN" : "ES"}
             </button>
             <button
               onClick={toggleTheme}
-              className="px-3 py-1.5 text-xs rounded-md bg-[var(--bg-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
+              className="px-3 py-1.5 text-xs rounded-md bg-[var(--bg-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
               title={theme === "dark" ? t("switchToLight") : t("switchToDark")}
             >
               {theme === "dark" ? "☀️" : "🌙"}
@@ -68,13 +68,13 @@ export default function Navbar() {
           <div className="flex md:hidden items-center gap-1.5">
             <button
               onClick={() => setLocale(otherLocale)}
-              className="px-2 py-1 text-xs rounded-md bg-[var(--bg-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
+              className="px-2 py-1 text-xs rounded-md bg-[var(--bg-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
             >
               {locale === "es" ? "EN" : "ES"}
             </button>
             <button
               onClick={toggleTheme}
-              className="px-2 py-1 text-xs rounded-md bg-[var(--bg-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer"
+              className="px-2 py-1 text-xs rounded-md bg-[var(--bg-elevated)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors"
               title={theme === "dark" ? t("switchToLight") : t("switchToDark")}
             >
               {theme === "dark" ? "☀️" : "🌙"}

@@ -2,13 +2,34 @@
 
 import { personalInfo } from "@/lib/cv-data";
 import { useT, useLocaleContext } from "@/components/LocaleProvider";
+import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useState, useRef } from "react";
 
-const allTech = ["Next.js", "NestJS", "TypeScript", "PostgreSQL", "Docker", "React", "Node.js", "Strapi", "JWT", "WebSockets"];
+const allTech = ["Next.js", "NestJS", "TypeScript", "JavaScript", "PostgreSQL", "Docker", "React", "Node.js", "Strapi", "JWT", "WebSockets"];
 
 export default function QuickMetrics() {
   const t = useT("metrics");
   const { locale, tRaw } = useLocaleContext();
+  const router = useRouter();
+  const fullPath = usePathname();
+  const urlLocale = fullPath.split("/")[1] || "en";
+
+  const handleTechClick = (tech: string) => {
+    router.push(`/${urlLocale}/skills?highlight=${encodeURIComponent(tech)}`);
+  };
+
+  const specsSkillMap: Record<string, string> = {
+    "SaaS Platforms": "React & Next.js",
+    "Fintech Applications": "TypeScript",
+    "Real-Time Systems": "WebSockets & Real-Time",
+    "API Architecture": "REST API Design",
+    "Headless CMS": "Strapi (Headless CMS)",
+    "Plataformas SaaS": "React & Next.js",
+    "Aplicaciones Fintech": "TypeScript",
+    "Sistemas Tiempo Real": "WebSockets & Real-Time",
+    "Arquitectura API": "REST API Design",
+    "CMS Headless": "Strapi (Headless CMS)",
+  };
 
   const rows = [
     { label: t("nameLabel"), val: personalInfo.name },
@@ -60,7 +81,7 @@ export default function QuickMetrics() {
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <span className="text-xs font-mono text-[var(--accent)]">$</span>
-          <span className="text-xs font-mono text-[var(--text-secondary)]">quick-metrics --profile</span>
+          <span className="text-xs font-mono text-[var(--text-secondary)]">cat ~/quick-metrics --profile</span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="w-1.5 h-1.5 rounded-full bg-[var(--success)] animate-pulse" />
@@ -76,10 +97,10 @@ export default function QuickMetrics() {
               show(i) ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"
             }`}
           >
-            <span className="text-[11px] font-mono text-[var(--text-muted)] shrink-0 w-28">
+            <span className="text-[11px] font-mono text-[var(--text-muted)] shrink-0 w-28 text-right mr-2">
               {row.label}
-              <span className="text-[var(--accent)]"> │</span>
             </span>
+            <span className="text-[var(--accent)] text-[11px] mr-2">│</span>
             <span className="text-xs font-mono text-[var(--text-primary)] truncate">
               {i === visible && visible < rows.length ? (
                 <span>
@@ -120,12 +141,13 @@ export default function QuickMetrics() {
         </p>
         <div className="flex flex-wrap gap-1.5">
           {specs.map((s) => (
-            <span
+            <button
               key={s}
-              className="px-2 py-0.5 text-[10px] rounded bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/20 font-mono"
+              onClick={() => handleTechClick(specsSkillMap[s] || "TypeScript")}
+              className="badge"
             >
               {s}
-            </span>
+            </button>
           ))}
         </div>
       </div>
@@ -142,12 +164,13 @@ export default function QuickMetrics() {
         }`}
       >
         {allTech.map((tech) => (
-          <span
+          <button
             key={tech}
-            className="px-1.5 py-0.5 text-[10px] rounded bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/20 font-mono"
+            onClick={() => handleTechClick(tech)}
+            className="badge"
           >
             {tech}
-          </span>
+          </button>
         ))}
       </div>
     </div>

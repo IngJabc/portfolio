@@ -8,7 +8,7 @@
     "contact": "Contacto"
   },
   "boot": {
-    "title": "Web Application Engineer · AI-First",
+    "title": "Fullstack Web Developer",
     "loading": "Inicializando sistema...",
     "subtitle": "Cargando portfolio interactivo"
   },
@@ -21,37 +21,7 @@
     "viewProjects": "Ver Proyectos",
     "viewExperience": "Ver Experiencia",
     "aiAssistant": "AI Assistant",
-    "contact": "Contacto",
-    "impact": {
-      "label": "cat ~/impact --metrics",
-      "stats": {
-        "projects": "Proyectos entregados",
-        "experience": "Años de experiencia",
-        "technologies": "Tecnologías dominadas",
-        "remote": "Disponible remoto"
-      },
-      "highlights": {
-        "saas": {
-          "title": "Arquitectura SaaS escalable",
-          "desc": "Diseño sistemas desde cero: autenticación, APIs REST, base de datos y despliegue en producción."
-        },
-        "ai": {
-          "title": "Entrega acelerada con IA",
-          "desc": "Flujo de trabajo AI-First que reduce tiempos de desarrollo sin sacrificar calidad ni arquitectura."
-        },
-        "web": {
-          "title": "Web apps & landing pages",
-          "desc": "Desde sitios corporativos y landing pages de alto impacto hasta aplicaciones web completas listas para producción."
-        }
-      },
-      "timeline": {
-        "label": "cat ~/projects/timeline --impact",
-        "develsoft": "Sitio corporativo · Presencia digital consolidada",
-        "lupea": "SaaS construcción · Gestión de obras en tiempo real",
-        "chaudeudas": "Fintech · Liquidación automatizada de deudas",
-        "algira": "Reservas real-time · Pagos integrados con Braintree"
-      }
-    }
+    "contact": "Contacto"
   },
   "projects": {
     "title": "Proyectos",
