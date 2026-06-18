@@ -32,6 +32,13 @@ export const skillsData: Record<string, SkillCategory[]> = {
           level: "Production",
         },
         {
+          name: "JavaScript (ES6+)",
+          description:
+            "Legacy and modern JavaScript across frontend and backend — used extensively before the TypeScript transition.",
+          context: "Legacy codebases, early-stage projects, dynamic scripting",
+          level: "Production",
+        },
+        {
           name: "Tailwind CSS & Modern CSS",
           description:
             "Utility-first responsive layouts with dark mode, glassmorphism, and custom animations. Built without heavy CSS frameworks.",
@@ -146,6 +153,13 @@ export const skillsData: Record<string, SkillCategory[]> = {
           description:
             "Desarrollo type-safe en todo el stack — desde contratos de API hasta props de componentes. Reducción de errores en tiempo de ejecución con tipado estricto.",
           context: "Apps full-stack, librerías compartidas, capas de integración",
+          level: "Production",
+        },
+        {
+          name: "JavaScript (ES6+)",
+          description:
+            "JavaScript legacy y moderno en frontend y backend — usado extensamente antes de la transición a TypeScript.",
+          context: "Codebases legacy, proyectos tempranos, scripting dinámico",
           level: "Production",
         },
         {

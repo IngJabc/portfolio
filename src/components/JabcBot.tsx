@@ -14,35 +14,13 @@ export default function JabcBot() {
   const dict = dictionary[locale].jabcbot;
   const router = useRouter();
 
-  // close panel on route change
+  // lock body scroll when panel is open (mobile)
   useEffect(() => {
-    return () => {};
-  }, []);
-
-  // lock background scroll when the chat panel is open
-  useEffect(() => {
-    if (!open) return;
-
-    const scrollY = typeof window !== "undefined" ? window.scrollY || window.pageYOffset : 0;
-    const originalOverflow = document.body.style.overflow;
-    const originalPosition = document.body.style.position;
-    const originalTop = document.body.style.top;
-    const originalWidth = document.body.style.width;
-
-    // Prevent background scroll. Use fixed positioning to handle iOS Safari properly.
-    document.body.style.overflow = "hidden";
-    document.body.style.position = "fixed";
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.width = "100%";
-
-    return () => {
-      document.body.style.overflow = originalOverflow;
-      document.body.style.position = originalPosition;
-      document.body.style.top = originalTop;
-      document.body.style.width = originalWidth;
-      // restore scroll position
-      window.scrollTo(0, scrollY);
-    };
+    if (open) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => { document.body.style.overflow = prev; };
+    }
   }, [open]);
 
   const handleNavigate = (path: string) => {
@@ -51,20 +29,18 @@ export default function JabcBot() {
   };
 
   return (
-    <div
-      className="fixed bottom-0 right-0 pointer-events-none"
-      aria-live="polite"
-    >
+    <div className="fixed bottom-0 right-0 pointer-events-none" aria-live="polite">
       {/* Floating button */}
       <button
         aria-expanded={open}
         aria-controls="jabcbot-panel"
         onClick={() => setOpen((s) => !s)}
-        className="pointer-events-auto fixed bottom-6 right-6 z-50 inline-flex items-center gap-2 px-3 py-2 rounded-lg font-mono bg-[var(--bg-elevated)] text-[var(--text-primary)] border border-[var(--border)] shadow-lg hover:scale-105 transition-transform cursor-pointer"
+        className="pointer-events-auto fixed bottom-8 right-8 z-50 inline-flex items-center justify-center w-16 h-16 rounded-full font-mono bg-[var(--bg-elevated)] text-[var(--accent)] border-2 border-[var(--accent)]/50 shadow-lg hover:scale-110 hover:border-[var(--accent)] hover:shadow-[0_0_30px_var(--accent-30)] transition-all duration-200 cursor-pointer animate-float"
         title={open ? dict.buttonClose : dict.buttonOpen}
       >
-        {/* <span className="text-xs font-mono">&gt;</span> */}
-        <span className="font-semibold text-sm">{dict.open}</span>
+        <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+        </svg>
       </button>
 
       <AnimatePresence>
@@ -75,26 +51,28 @@ export default function JabcBot() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.18 }}
-            className="pointer-events-auto fixed z-50 top-[calc(env(safe-area-inset-top,0px)+72px)] bottom-[80px] left-3 right-3 sm:top-auto sm:bottom-20 sm:left-auto sm:right-6 sm:w-[420px] sm:h-[600px]"
+            className="pointer-events-auto fixed bottom-20 right-6 z-50 w-[calc(100vw-24px)] sm:w-[420px] top-[80px]"
           >
             <div className="flex flex-col h-full glass-panel border border-[var(--border)]">
-              <AIChat fullHeight onClose={() => setOpen(false)} />
+              <div className="flex-1 overflow-hidden">
+                <AIChat fullHeight onClose={() => setOpen(false)} />
+              </div>
 
               <div className="p-2 border-t border-[var(--border)] bg-[var(--bg-primary)] flex gap-2 items-center">
                 <button
-                  onClick={() => handleNavigate("/projects")}
+                  onClick={() => handleNavigate('/projects')}
                   className="flex-1 text-xs font-mono px-2 py-1 rounded bg-[var(--bg-elevated)] border border-[var(--border)] hover:bg-[var(--accent)]/5"
                 >
                   {dict.footerProjects}
                 </button>
                 <button
-                  onClick={() => handleNavigate("/skills")}
+                  onClick={() => handleNavigate('/skills')}
                   className="flex-1 text-xs font-mono px-2 py-1 rounded bg-[var(--bg-elevated)] border border-[var(--border)] hover:bg-[var(--accent)]/5"
                 >
                   {dict.footerSkills}
                 </button>
                 <button
-                  onClick={() => handleNavigate("/contact")}
+                  onClick={() => handleNavigate('/contact')}
                   className="text-xs font-mono px-2 py-1 rounded bg-[var(--bg-elevated)] border border-[var(--border)] hover:bg-[var(--accent)]/5"
                 >
                   {dict.footerContact}

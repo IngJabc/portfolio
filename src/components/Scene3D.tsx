@@ -20,8 +20,8 @@ function CoreShape() {
       <mesh ref={meshRef}>
         <icosahedronGeometry args={[2, 1]} />
         <MeshDistortMaterial
-          color="#06B6D4"
-          emissive="#06B6D4"
+          color="#0284C7"
+          emissive="#0284C7"
           emissiveIntensity={0.2}
           wireframe
           transparent
@@ -65,7 +65,7 @@ function OuterRing() {
   return (
     <mesh ref={ringRef}>
       <torusGeometry args={[4.5, 0.015, 16, 100]} />
-      <meshBasicMaterial color="#06B6D4" transparent opacity={0.1} />
+      <meshBasicMaterial color="#0284C7" transparent opacity={0.1} />
     </mesh>
   );
 }
@@ -94,7 +94,7 @@ function FloatingCubes() {
         <Float key={i} speed={1} rotationIntensity={0.5} floatIntensity={0.3}>
           <mesh position={[p.x, p.y, p.z]}>
             <boxGeometry args={[0.15, 0.15, 0.15]} />
-            <meshBasicMaterial color="#06B6D4" transparent opacity={0.3} />
+            <meshBasicMaterial color="#0284C7" transparent opacity={0.3} />
           </mesh>
         </Float>
       ))}
@@ -121,7 +121,7 @@ function Particles() {
     <points geometry={geometry}>
       <pointsMaterial
         size={0.02}
-        color="#06B6D4"
+        color="#0284C7"
         transparent
         opacity={0.3}
         sizeAttenuation

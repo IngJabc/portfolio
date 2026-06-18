@@ -1,13 +1,18 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useT } from "@/components/LocaleProvider";
 import SystemStatusPanel from "@/components/SystemStatusPanel";
 import QuickMetrics from "@/components/QuickMetrics";
+import NavigationActions from "@/components/NavigationActions";
 import ImpactSection from "@/components/ImpactSection";
 import DeveloperLicense from "@/components/DeveloperLicense";
 
 export default function DashboardPage() {
   const t = useT("dashboard");
+  const fullPath = usePathname();
+  const urlLocale = fullPath.split("/")[1] || "en";
 
   return (
     <div className="min-h-screen pt-20 pb-12 px-4 sm:px-6 lg:px-8">
@@ -26,7 +31,18 @@ export default function DashboardPage() {
           </div>
         </div>
 
+        <NavigationActions />
+
         <ImpactSection />
+
+        <div className="mt-8 flex justify-center">
+          <Link
+            href={`/${urlLocale}/projects`}
+            className="glass-panel px-8 py-4 inline-flex items-center gap-3 text-sm font-semibold text-[var(--accent)] border border-[var(--accent)]/30 hover:bg-[var(--accent)]/10 transition-all rounded-lg"
+          >
+            {t("cta")}
+          </Link>
+        </div>
 
         <DeveloperLicense />
       </div>

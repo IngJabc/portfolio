@@ -2,11 +2,19 @@
 
 import type { Experience } from "@/lib/cv-data";
 import { useLocaleContext } from "@/components/LocaleProvider";
+import { useRouter, usePathname } from "next/navigation";
 import { dictionary } from "@/lib/translations";
 
 export default function ExperienceTimeline({ experience: exp, index }: { experience: Experience; index: number }) {
   const { locale } = useLocaleContext();
+  const router = useRouter();
+  const fullPath = usePathname();
+  const urlLocale = fullPath.split("/")[1] || "en";
   const localizedHighlights = (dictionary[locale]?.experience?.highlights as unknown as Record<string, string[]> | undefined)?.[exp.company];
+
+  const handleTechClick = (tech: string) => {
+    router.push(`/${urlLocale}/skills?highlight=${encodeURIComponent(tech)}`);
+  };
   const highlights = localizedHighlights ?? exp.highlights;
 
   return (
@@ -37,12 +45,13 @@ export default function ExperienceTimeline({ experience: exp, index }: { experie
           {exp.tech.length > 0 && (
             <div className="flex flex-wrap gap-1.5 mt-3">
               {exp.tech.map((tech) => (
-                <span
+                <button
                   key={tech}
-                  className="px-2 py-0.5 text-xs rounded-md bg-[var(--border)] text-[var(--text-secondary)]"
+                  onClick={() => handleTechClick(tech)}
+                  className="badge"
                 >
                   {tech}
-                </span>
+                </button>
               ))}
             </div>
           )}

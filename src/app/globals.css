@@ -7,7 +7,7 @@
   --text-secondary: #9CA3AF;
   --text-muted: #6B7280;
   --border: #1F2937;
-  --accent: #06B6D4;
+  --accent: #0284C7;
   --accent-secondary: #3B82F6;
   --success: #10B981;
   --warning: #F59E0B;
@@ -24,11 +24,11 @@
   --bg-surface: #FFFFFF;
   --bg-elevated: #F3F4F6;
   --text-primary: #111827;
-  --text-secondary: #4B5563;
-  --text-muted: #9CA3AF;
+  --text-secondary: #1F2937;
+  --text-muted: #374151;
   --border: #E5E7EB;
-  --accent: #0891B2;
-  --accent-secondary: #2563EB;
+  --accent: #0284C7;
+  --accent-secondary: #3B82F6;
   --success: #059669;
   --warning: #D97706;
   --error: #DC2626;
@@ -127,6 +127,27 @@ body {
 
 @keyframes blink {
   50% { opacity: 0; }
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.625rem;
+  font-family: var(--font-mono);
+  border-radius: 999px;
+  background: var(--accent-10);
+  color: var(--accent);
+  border: 1px solid var(--accent-30);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.badge:hover {
+  background: var(--accent-20);
+  border-color: var(--accent);
 }
 
 .page-enter {

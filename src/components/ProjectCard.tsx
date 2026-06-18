@@ -4,12 +4,20 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Project } from "@/lib/cv-data";
 import { useT, useLocaleContext } from "@/components/LocaleProvider";
+import { useRouter, usePathname } from "next/navigation";
 import { dictionary } from "@/lib/translations";
 
 export default function ProjectCard({ project }: { project: Project }) {
   const t = useT("projects");
   const { locale } = useLocaleContext();
+  const router = useRouter();
+  const fullPath = usePathname();
+  const urlLocale = fullPath.split("/")[1] || "en";
   const [expanded, setExpanded] = useState(false);
+
+  const handleTechClick = (tech: string) => {
+    router.push(`/${urlLocale}/skills?highlight=${encodeURIComponent(tech)}`);
+  };
 
   const localizedContent = (dictionary[locale]?.projects?.content as unknown as Record<string, Record<string, string>> | undefined)?.[project.id];
   const shortDesc = localizedContent?.short;
@@ -40,12 +48,13 @@ export default function ProjectCard({ project }: { project: Project }) {
             </div>
             <div className="flex flex-wrap gap-1.5 mt-2">
               {project.stack.map((tech) => (
-                <span
+                <button
                   key={tech}
-                  className="px-2 py-0.5 text-xs rounded-md bg-[var(--bg-elevated)] text-[var(--text-secondary)] border border-[var(--border)]"
+                  onClick={() => handleTechClick(tech)}
+                  className="badge"
                 >
                   {tech}
-                </span>
+                </button>
               ))}
             </div>
             {shortDesc && (
@@ -54,12 +63,12 @@ export default function ProjectCard({ project }: { project: Project }) {
               </p>
             )}
           </div>
-          <motion.span
-            animate={{ rotate: expanded ? 180 : 0 }}
-            className="text-[var(--text-secondary)] text-xl ml-4 shrink-0"
-          >
-            ▾
-          </motion.span>
+            <motion.span
+              animate={{ rotate: expanded ? 180 : 0 }}
+              className="text-[var(--accent)] text-2xl ml-4 shrink-0"
+            >
+              ▾
+            </motion.span>
         </div>
       </button>
 
