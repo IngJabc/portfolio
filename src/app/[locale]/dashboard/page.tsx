@@ -10,8 +10,8 @@ import ImpactSection from "@/components/ImpactSection";
 import DeveloperLicense from "@/components/DeveloperLicense";
 import { useState, useEffect, useRef, useCallback } from "react";
 
-const KONAMI_SEQ = ["w", "w", "a", "a", "s", "s", "d", "d", "b", "a"];
-const SWIPE_SEQ = ["up", "up", "left", "left", "down", "down", "right", "right", "tap", "tap"];
+const KONAMI_SEQ = ["w", "w", "s", "s", "a", "d", "a", "d", "b", "a"];
+const SWIPE_SEQ = ["up", "up", "down", "down", "left", "right", "left", "right", "tap", "tap"];
 const SWIPE_THRESHOLD = 30;
 
 export default function DashboardPage() {
