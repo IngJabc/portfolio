@@ -57,7 +57,7 @@ export default function Navbar() {
               {locale === "es" ? "EN" : "ES"}
             </button>
             <a
-              href="/CV%20Jos%C3%A9%20%20Web%20Application%20Engineer.pdf"
+              href="/CV-Jose-Bonilla-Web-Engineer.pdf"
               download
               className="px-3 py-1.5 text-xs rounded-md bg-[var(--bg-elevated)] text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors"
               title={locale === "en" ? "Download CV" : "Descargar CV"}
@@ -75,7 +75,7 @@ export default function Navbar() {
 
           <div className="flex md:hidden items-center gap-1.5">
             <a
-              href="/CV%20Jos%C3%A9%20%20Web%20Application%20Engineer.pdf"
+              href="/CV-Jose-Bonilla-Web-Engineer.pdf"
               download
               className="px-2 py-1 text-xs rounded-md bg-[var(--bg-elevated)] text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors"
               title={locale === "en" ? "Download CV" : "Descargar CV"}

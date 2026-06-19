@@ -11,6 +11,8 @@ import DeveloperLicense from "@/components/DeveloperLicense";
 import { useState, useEffect, useRef, useCallback } from "react";
 
 const KONAMI_SEQ = ["w", "w", "a", "a", "s", "s", "d", "d", "b", "a"];
+const SWIPE_SEQ = ["up", "up", "left", "left", "down", "down", "right", "right", "tap", "tap"];
+const SWIPE_THRESHOLD = 30;
 
 export default function DashboardPage() {
   const t = useT("dashboard");
@@ -22,6 +24,8 @@ export default function DashboardPage() {
   const [showSecretPrompt, setShowSecretPrompt] = useState(false);
   const [dollarClicks, setDollarClicks] = useState(0);
   const seqRef = useRef<string[]>([]);
+  const swipeSeqRef = useRef<string[]>([]);
+  const touchStartRef = useRef<{ x: number; y: number; time: number } | null>(null);
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     seqRef.current.push(e.key.toLowerCase());
@@ -34,6 +38,53 @@ export default function DashboardPage() {
       seqRef.current = [];
     }
   }, []);
+
+  const handleTouchStart = useCallback((e: TouchEvent) => {
+    const t = e.touches[0];
+    touchStartRef.current = { x: t.clientX, y: t.clientY, time: Date.now() };
+  }, []);
+
+  const handleTouchEnd = useCallback((e: TouchEvent) => {
+    if (!touchStartRef.current) return;
+    const start = touchStartRef.current;
+    const t = e.changedTouches[0];
+    const dx = start.x - t.clientX;
+    const dy = start.y - t.clientY;
+    const elapsed = Date.now() - start.time;
+    let gesture = "";
+
+    if (Math.abs(dx) < 10 && Math.abs(dy) < 10 && elapsed < 300) {
+      gesture = "tap";
+    } else if (Math.abs(dx) > SWIPE_THRESHOLD || Math.abs(dy) > SWIPE_THRESHOLD) {
+      if (Math.abs(dx) > Math.abs(dy)) {
+        gesture = dx > 0 ? "left" : "right";
+      } else {
+        gesture = dy > 0 ? "up" : "down";
+      }
+    }
+
+    if (gesture) {
+      swipeSeqRef.current.push(gesture);
+      if (swipeSeqRef.current.length > SWIPE_SEQ.length) {
+        swipeSeqRef.current.shift();
+      }
+      if (swipeSeqRef.current.join("") === SWIPE_SEQ.join("")) {
+        setShowAchievement(true);
+        setTimeout(() => setShowAchievement(false), 4000);
+        swipeSeqRef.current = [];
+      }
+    }
+    touchStartRef.current = null;
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener("touchstart", handleTouchStart, { passive: true });
+    document.addEventListener("touchend", handleTouchEnd, { passive: true });
+    return () => {
+      document.removeEventListener("touchstart", handleTouchStart);
+      document.removeEventListener("touchend", handleTouchEnd);
+    };
+  }, [handleTouchStart, handleTouchEnd]);
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
@@ -170,7 +221,7 @@ export default function DashboardPage() {
               {t("cta")}
             </Link>
             <a
-              href="/CV%20Jos%C3%A9%20%20Web%20Application%20Engineer.pdf"
+              href="/CV-Jose-Bonilla-Web-Engineer.pdf"
               download
               className="glass-panel px-8 py-4 inline-flex items-center gap-3 text-sm font-semibold text-[var(--text-secondary)] border border-[var(--border)] hover:border-[var(--accent)]/30 hover:text-[var(--accent)] transition-all rounded-lg"
             >

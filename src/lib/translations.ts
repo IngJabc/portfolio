@@ -255,6 +255,9 @@ export const dictionary = {
       clickToReveal: "[Click to reveal]",
       copied: "Copied!",
       copyLabel: "Copy to clipboard",
+      emailSubject: "Let's work together",
+      emailBody: "Hi José! I saw your portfolio and I'd like to connect.",
+      whatsappMessage: "Hi José! I saw your portfolio and I'd like to discuss a project opportunity.",
       orAskAI:
         "Looking for specific insights? Query my custom RAG AI Assistant about my engineering background.",
       aiAssistant: "AI Assistant",
@@ -613,6 +616,9 @@ export const dictionary = {
       clickToReveal: "[Click para revelar]",
       copied: "¡Copiado!",
       copyLabel: "Copiar al portapapeles",
+      emailSubject: "Trabajemos juntos",
+      emailBody: "¡Hola José! Vi tu portafolio y me gustaría conectar.",
+      whatsappMessage: "¡Hola José! Vi tu portafolio y me gustaría hablar sobre una oportunidad de proyecto.",
       orAskAI:
         "¿Buscas información específica? Consulta mi RAG AI Assistant personalizado sobre mi perfil de ingeniería.",
       aiAssistant: "AI Assistant",

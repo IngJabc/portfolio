@@ -121,7 +121,7 @@ export default function BootPage() {
             </a>
 
             <a
-              href="/CV%20Jos%C3%A9%20%20Web%20Application%20Engineer.pdf"
+              href="/CV-Jose-Bonilla-Web-Engineer.pdf"
               download
               className="inline-flex items-center gap-1.5 px-4 py-2 text-xs rounded-lg bg-[var(--accent)]/10 text-[var(--accent)] border border-[var(--accent)]/30 hover:bg-[var(--accent)]/20 transition-colors font-mono"
             >
