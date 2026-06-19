@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useSearchParams } from "next/navigation";
 import { useT, useLocaleContext } from "@/components/LocaleProvider";
-import { skillsData, type SkillCategory } from "@/lib/skills-data";
+import { skillsData, type SkillCategory, type SkillWithContext } from "@/lib/skills-data";
 import styles from "./SkillsGrid.module.css";
 import { useState, useEffect, useRef, Suspense } from "react";
 
@@ -23,6 +23,45 @@ const stagger = {
   }),
 };
 
+const BADGE_TO_SKILL_FRAGMENT: Record<string, string> = {
+  "next.js": "next.js",
+  "react": "next.js",
+  "strapi v5": "strapi",
+  "strapi": "strapi",
+  "websockets": "websockets",
+  "jwt": "auth",
+  "recaptcha": "auth",
+  "auth": "auth",
+  "security": "auth",
+  "javascript": "javascript",
+  "tailwind css": "tailwind",
+  "tailwind": "tailwind",
+  "git": "git",
+  "github": "git",
+  "azure": "azure",
+  "cloud": "azure",
+  "rest api": "rest",
+  "rest": "rest",
+};
+
+function findSkill(
+  categories: SkillCategory[],
+  query: string
+): { category: SkillCategory; skill: SkillWithContext } | null {
+  const q = query.toLowerCase();
+  for (const cat of categories) {
+    let match = cat.skills.find((s) => s.name.toLowerCase() === q);
+    if (!match) {
+      const fragment = BADGE_TO_SKILL_FRAGMENT[q];
+      if (fragment) {
+        match = cat.skills.find((s) => s.name.toLowerCase().includes(fragment));
+      }
+    }
+    if (match) return { category: cat, skill: match };
+  }
+  return null;
+}
+
 function SkillsGridInner() {
   const t = useT("skills");
   const { locale, tRaw } = useLocaleContext();
@@ -31,6 +70,7 @@ function SkillsGridInner() {
   const highlightTech = searchParams?.get("highlight");
 
   const [highlighted, setHighlighted] = useState<string | null>(null);
+  const [highlightedSkill, setHighlightedSkill] = useState<string | null>(null);
   const cardRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   const whatBuiltList = (tRaw("skills", "whatBuiltList") || []) as string[];
@@ -39,18 +79,17 @@ function SkillsGridInner() {
   useEffect(() => {
     if (!highlightTech) return;
 
-    for (const cat of categories) {
-      const match = cat.skills.find(
-        (s) => s.name.toLowerCase() === highlightTech.toLowerCase()
-      );
-      if (match) {
-        setHighlighted(cat.id);
-        setTimeout(() => {
-          cardRefs.current[cat.id]?.scrollIntoView({ behavior: "smooth", block: "center" });
-        }, 100);
-        setTimeout(() => setHighlighted(null), 2500);
-        break;
-      }
+    const result = findSkill(categories, highlightTech);
+    if (result) {
+      setHighlighted(result.category.id);
+      setHighlightedSkill(result.skill.name);
+      setTimeout(() => {
+        cardRefs.current[result.category.id]?.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 100);
+      setTimeout(() => {
+        setHighlighted(null);
+        setHighlightedSkill(null);
+      }, 2500);
     }
   }, [highlightTech, categories]);
 
@@ -90,7 +129,11 @@ function SkillsGridInner() {
               {cat.skills.map((skill) => (
                 <div key={skill.name} className={styles.skillItem}>
                   <div className={styles.skillHeader}>
-                    <span className={styles.skillName}>{skill.name}</span>
+                    <span
+                      className={`${styles.skillName} ${highlightedSkill === skill.name ? styles.skillHighlight : ""}`}
+                    >
+                      {skill.name}
+                    </span>
                     <span className={`${styles.levelBadge} ${levelClassMap[skill.level] || ""}`}>
                       {t(`level.${skill.level}`)}
                     </span>

@@ -28,7 +28,7 @@ export const skillsData: Record<string, SkillCategory[]> = {
           name: "TypeScript",
           description:
             "Type-safe development across the stack — from API contracts to component props. Reduced runtime errors through strict typing.",
-          context: "Full-stack apps, shared libraries, API integration layers",
+          context: "Web apps, shared libraries, API integration layers",
           level: "Production",
         },
         {

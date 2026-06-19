@@ -20,12 +20,12 @@ export default function QuickMetrics() {
 
   const specsSkillMap: Record<string, string> = {
     "SaaS Platforms": "React & Next.js",
-    "Fintech Applications": "TypeScript",
+    "Web Applications": "TypeScript",
     "Real-Time Systems": "WebSockets & Real-Time",
     "API Architecture": "REST API Design",
     "Headless CMS": "Strapi (Headless CMS)",
     "Plataformas SaaS": "React & Next.js",
-    "Aplicaciones Fintech": "TypeScript",
+    "Aplicaciones Web": "TypeScript",
     "Sistemas Tiempo Real": "WebSockets & Real-Time",
     "Arquitectura API": "REST API Design",
     "CMS Headless": "Strapi (Headless CMS)",

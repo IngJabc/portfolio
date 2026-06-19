@@ -20,8 +20,8 @@ export default function ExperiencePage() {
           {experience.map((exp, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
             >
               <ExperienceTimeline experience={exp} index={i} />

@@ -2,7 +2,6 @@
 
 import { useT } from "@/components/LocaleProvider";
 import { useRouter, usePathname } from "next/navigation";
-import { systemStatus, statusColors } from "@/lib/cv-data";
 import { motion } from "framer-motion";
 
 const systemKeys = [
@@ -13,6 +12,22 @@ const systemKeys = [
   { key: "realtime", labelKey: "realtime" },
   { key: "ai", labelKey: "ai" },
 ] as const;
+
+const systemLevels: Record<string, string> = {
+  frontend: "Production",
+  backend: "Production",
+  database: "Advanced",
+  auth: "Advanced",
+  realtime: "Production",
+  ai: "Advanced",
+};
+
+const levelColors: Record<string, string> = {
+  Production: "#10B981",
+  Advanced: "#3B82F6",
+  Intermediate: "#F59E0B",
+  Basic: "#6B7280",
+};
 
 const skillsMap: Record<string, string> = {
   frontend: "React & Next.js",
@@ -25,6 +40,7 @@ const skillsMap: Record<string, string> = {
 
 export default function SystemStatusPanel() {
   const t = useT("status");
+  const tSkills = useT("skills");
   const router = useRouter();
   const fullPath = usePathname();
   const urlLocale = fullPath.split("/")[1] || "en";
@@ -43,8 +59,8 @@ export default function SystemStatusPanel() {
       </h2>
       <div className="space-y-3">
         {systemKeys.map((item, i) => {
-          const status = systemStatus[item.key as keyof typeof systemStatus];
-          const color = statusColors[status];
+          const level = systemLevels[item.key];
+          const color = levelColors[level];
           return (
             <motion.div
               key={item.key}
@@ -57,18 +73,16 @@ export default function SystemStatusPanel() {
               <span className="text-sm text-[var(--text-secondary)] font-mono">
                 {t(item.labelKey)}
               </span>
-              <div className="flex items-center gap-2">
-                <span
-                  className="w-2 h-2 rounded-full"
-                  style={{ backgroundColor: color, boxShadow: `0 0 6px ${color}` }}
-                />
-                <span
-                  className="text-sm font-mono font-semibold"
-                  style={{ color }}
-                >
-                  {status}
-                </span>
-              </div>
+              <span
+                className="inline-flex items-center px-2 py-0.5 text-xs rounded-full font-mono whitespace-nowrap"
+                style={{
+                  backgroundColor: `color-mix(in srgb, ${color} 15%, transparent)`,
+                  color,
+                  border: `1px solid color-mix(in srgb, ${color} 30%, transparent)`,
+                }}
+              >
+                {tSkills(`level.${level}`)}
+              </span>
             </motion.div>
           );
         })}

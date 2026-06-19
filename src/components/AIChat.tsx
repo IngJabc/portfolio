@@ -40,6 +40,10 @@ function findAnswer(query: string, locale: "en" | "es"): string {
   const q = query.toLowerCase();
   const dict = dictionary[locale].ai.answers;
 
+  if (q === "hi" || q === "hello" || q === "hey" || q === "hola" || q === "buenas" || q === "buenos días" || q === "buenas tardes" || q.includes("say hello") || q.includes("say hi") || q.includes("saluda") || q.includes("saludar")) {
+    return dict.easterEgg;
+  }
+
   if (q.includes("dispon") || q.includes("availab") || q.includes("freelance")) {
     return dict.availability;
   }

@@ -51,7 +51,7 @@ export default function JabcBot() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.18 }}
-            className="pointer-events-auto fixed bottom-20 right-6 z-50 w-[calc(100vw-24px)] sm:w-[420px] top-[80px]"
+            className="pointer-events-auto fixed bottom-20 max-sm:left-3 right-6 z-50 w-[calc(100vw-24px)] sm:w-[420px] top-[80px]"
           >
             <div className="flex flex-col h-full glass-panel border border-[var(--border)]">
               <div className="flex-1 overflow-hidden">
