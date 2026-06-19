@@ -93,7 +93,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                   </p>
                 </div>
               ))}
-              <div className="pt-4 flex flex-wrap gap-3 border-t border-[var(--border)]">
+              <div className="flex flex-wrap gap-3">
                 <a
                   href={project.url}
                   target="_blank"

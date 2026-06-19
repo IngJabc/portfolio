@@ -4,10 +4,10 @@ import { useT } from "@/components/LocaleProvider";
 import { useRouter, usePathname } from "next/navigation";
 
 const stats = [
-  { value: "4+", key: "stats.projects" },
-  { value: "3+", key: "stats.experience" },
-  { value: "8+", key: "stats.technologies" },
-  { value: "100%", key: "stats.remote" },
+  { value: "4+", key: "stats.projects", route: "projects" },
+  { value: "3+", key: "stats.experience", route: "experience" },
+  { value: "8+", key: "stats.technologies", route: "skills" },
+  { value: "100%", key: "stats.remote", route: "contact" },
 ] as const;
 
 const highlights = [
@@ -57,14 +57,18 @@ export default function ImpactSection() {
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {stats.map((s) => (
-          <div key={s.key} className="glass-panel p-5 text-center">
+          <button
+            key={s.key}
+            onClick={() => router.push(`/${urlLocale}/${s.route}`)}
+            className="glass-panel p-5 text-center cursor-pointer transition-opacity hover:opacity-80"
+          >
             <span className="text-3xl font-bold text-[var(--accent)] block font-mono">
               {s.value}
             </span>
             <span className="text-xs text-[var(--text-secondary)] font-mono mt-1 block">
               {t(`impact.${s.key}`)}
             </span>
-          </div>
+          </button>
         ))}
       </div>
 

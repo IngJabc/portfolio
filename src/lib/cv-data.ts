@@ -30,13 +30,13 @@ export interface Skill {
 
 export const personalInfo = {
   name: "José Bonilla",
-  title: "Full-Stack Engineer specialized in SaaS, Fintech & Real-Time Systems",
+  title: "Web Application Engineer specialized in SaaS, Real-Time Systems & RESTful APIs",
   email: "",
   linkedin: "https://www.linkedin.com/in/ing-jabc",
-  github: "",
-  bio: "Fullstack engineer with 3+ years of experience building scalable web applications. Specialized in Next.js, NestJS, and real-time systems. Passionate about clean architecture, system design, and production-grade solutions.",
+  github: "https://github.com/ing-jabc",
+  bio: "Web Application Engineer with 3+ years of experience building scalable web applications. Specialized in Next.js, NestJS, and real-time systems. Passionate about clean architecture, system design, and production-grade solutions.",
   yearsOfExperience: 3,
-  domains: ["SaaS", "Fintech", "Real-time Systems", "API Architecture", "Headless CMS"],
+  domains: ["SaaS", "Landing Pages", "Real-time Systems", "API Architecture", "Headless CMS"],
 };
 
 export const skills: Skill[] = [
@@ -61,7 +61,38 @@ export const projects: Project[] = [
     solution: "Arquitectura basada en Next.js con Strapi como CMS headless. WebSockets para comunicación en tiempo real. Algoritmo de matching por geolocalización y filtros. JWT para autenticación segura.",
     result: "Plataforma SaaS funcional con experiencia tipo 'Tinder' para compra/venta de repuestos, chat en tiempo real y sistema de cotizaciones.",
     url: "https://www.lupea.app/",
-    sourceUrl: "https://github.com/jose/lupea",
+    sourceUrl: null,
+    ndaProtected: true,
+  },
+  {
+    id: "algira",
+    title: "Algira",
+    type: "Real-time System",
+    stack: ["Next.js", "Strapi v5", "TypeScript", "PostgreSQL", "WebSockets", "JWT", "Braintree"],
+    problem: "Crear un sistema de rifas en tiempo real con pasarela de pago integrada, donde los usuarios pudieran participar y ver resultados al instante.",
+    architecture: "Plataforma de rifas en tiempo real con Next.js, Strapi como backend headless, WebSockets para actualizaciones en vivo, y Braintree para procesamiento de pagos.",
+    challenges: "Sincronización de eventos en tiempo real durante los sorteos, integración segura con Braintree, manejo de concurrencia en la compra de participaciones.",
+    solution: "Implementación de WebSockets para transmisión de eventos en vivo. Integración con Braintree para pagos seguros. Arquitectura escalable con Strapi y PostgreSQL.",
+    result: "Sistema de rifas en tiempo real completamente funcional con pagos integrados, actualizaciones en vivo y experiencia de usuario fluida.",
+    url: "https://algira-web.vercel.app/",
+    sourceUrl: "https://develsoftdev@dev.azure.com/develsoftdev/Algira/_git/Algira_Web",
+    ndaProtected: false,
+  },
+  {
+    id: "paula-roman",
+    title: "Paula Román — Asesora Jurídica",
+    type: "Landing Page / Corporate Website",
+    stack: ["Next.js", "TypeScript"],
+    problem: "Designed and built a professional landing page for an independent legal advisor, focused on credibility, clarity, and lead generation.",
+    architecture: "",
+    challenges:
+      "Paula Román, a strategic mentor with 30+ years in the insurance industry, had no digital presence. She needed a professional landing page to communicate her value proposition to independent insurance brokers and drive direct WhatsApp leads.",
+    solution:
+      "Designed and built a landing page with Next.js, TypeScript and Strapi as headless CMS. The page includes a hero with direct CTA, mentorship program overview, a 3-phase coaching cycle, client testimonials, and a contact section. All content is editable from Strapi without code changes.",
+    result:
+      "Paula now has a professional digital presence that clearly communicates her offer, with a direct WhatsApp lead capture channel and real client testimonials that reinforce her credibility.",
+    url: "https://www.paularomanasesora.com/",
+    sourceUrl: "https://github.com/paularomanasesora/paula-roman",
     ndaProtected: false,
   },
   {
@@ -89,20 +120,23 @@ export const projects: Project[] = [
     solution: "Desarrollo fullstack con Next.js y NestJS, arquitectura limpia, diseño responsivo y optimización de Core Web Vitals.",
     result: "Sitio web corporativo profesional que representa a la empresa en el mercado digital.",
     url: "https://www.develsoft.dev/",
-    sourceUrl: null,
-    ndaProtected: true,
+    sourceUrl: "https://develsoftdev@dev.azure.com/develsoftdev/Develsoft/_git/Develsoft_Web",
+    ndaProtected: false,
   },
   {
-    id: "algira",
-    title: "Algira",
-    type: "Real-time System",
-    stack: ["Next.js", "Strapi v5", "TypeScript", "PostgreSQL", "WebSockets", "JWT", "Braintree"],
-    problem: "Crear un sistema de rifas en tiempo real con pasarela de pago integrada, donde los usuarios pudieran participar y ver resultados al instante.",
-    architecture: "Plataforma de rifas en tiempo real con Next.js, Strapi como backend headless, WebSockets para actualizaciones en vivo, y Braintree para procesamiento de pagos.",
-    challenges: "Sincronización de eventos en tiempo real durante los sorteos, integración segura con Braintree, manejo de concurrencia en la compra de participaciones.",
-    solution: "Implementación de WebSockets para transmisión de eventos en vivo. Integración con Braintree para pagos seguros. Arquitectura escalable con Strapi y PostgreSQL.",
-    result: "Sistema de rifas en tiempo real completamente funcional con pagos integrados, actualizaciones en vivo y experiencia de usuario fluida.",
-    url: "https://algira-web.vercel.app/",
+    id: "braganza-vial",
+    title: "Braganza Vial",
+    type: "Landing Page / Corporate Website",
+    stack: ["Next.js", "TypeScript", "Strapi"],
+    problem: "Built a corporate landing page for a road infrastructure company, using Strapi as headless CMS for content management.",
+    architecture: "",
+    challenges:
+      "Braganza Vial's website had all content hardcoded directly into the codebase. The team couldn't update services, projects, clients, navigation or footer without developer intervention, creating constant technical dependency.",
+    solution:
+      "Migrated the backend to Strapi v5 with PostgreSQL, designing a full content structure for all site sections. Connected the existing frontend to the new CMS without altering the UI, and built a new \"Clients\" section with a logo grid manageable entirely from the admin panel.",
+    result:
+      "Braganza Vial's team can now update all site content autonomously from the admin panel without touching code. The project spanned 54 development hours across 6 structured stages.",
+    url: "https://www.braganzavial.com.uy/",
     sourceUrl: null,
     ndaProtected: true,
   },
@@ -120,7 +154,7 @@ export const experience: Experience[] = [
       "Engineered responsive, component-driven UIs with React and Next.js, enforcing clean architecture patterns that reduced cross-team merge conflicts and accelerated feature delivery.",
       "Orchestrated full-stack application containerization using Docker and Compose, standardizing development environments and streamlining CI/CD pipelines — cutting new developer onboarding time by approximately 60%.",
     ],
-    tech: ["Next.js", "NestJS", "TypeScript", "PostgreSQL", "Docker"],
+    tech: ["Next.js", "NestJS", "TypeScript", "PostgreSQL", "Docker", "Strapi", "WebSockets", "JWT", "Braintree", ".NET Core", "C#", "MySQL", "reCAPTCHA"],
   },
   {
     company: "Marna Corporate Group C.A.",

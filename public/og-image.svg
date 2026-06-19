@@ -2,9 +2,9 @@
   <rect width="1200" height="630" fill="#0B0F17"/>
   <rect x="60" y="60" width="1080" height="510" rx="16" fill="none" stroke="#1F2937" stroke-width="1"/>
   <text x="90" y="160" font-family="monospace" font-size="48" font-weight="bold" fill="#E5E7EB">José Bonilla</text>
-  <text x="90" y="220" font-family="monospace" font-size="28" fill="#0284C7">Fullstack Web Developer</text>
-  <text x="90" y="280" font-family="monospace" font-size="18" fill="#9CA3AF">Full-Stack engineer building scalable SaaS,</text>
-  <text x="90" y="310" font-family="monospace" font-size="18" fill="#9CA3AF">Fintech and real-time systems.</text>
+  <text x="90" y="220" font-family="monospace" font-size="28" fill="#0284C7">Web Application Engineer</text>
+  <text x="90" y="280" font-family="monospace" font-size="18" fill="#9CA3AF">Building SaaS platforms, landing pages and</text>
+  <text x="90" y="310" font-family="monospace" font-size="18" fill="#9CA3AF">real-time systems. TypeScript across the stack.</text>
   <rect x="90" y="350" width="260" height="40" rx="8" fill="none" stroke="#0284C7" stroke-opacity="0.3"/>
   <text x="100" y="376" font-family="monospace" font-size="16" fill="#0284C7">Next.js · NestJS · TypeScript</text>
   <rect x="90" y="400" width="200" height="40" rx="8" fill="none" stroke="#0284C7" stroke-opacity="0.3"/>
