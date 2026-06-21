@@ -40,9 +40,9 @@ export const personalInfo = {
 };
 
 export const skills: Skill[] = [
-  { category: "Frameworks", items: ["React", "Next.js", "Node.js", "NestJS", "Strapi v5"] },
+  { category: "Frameworks", items: ["React", "Next.js", "Node.js", "NestJS", "Strapi v5", "Tailwind CSS"] },
   { category: "Languages", items: ["TypeScript", "JavaScript", "SQL", "C#", "Java"] },
-  { category: "Databases", items: ["PostgreSQL", "MySQL", "MongoDB"] },
+  { category: "Databases", items: ["PostgreSQL", "MySQL", "MongoDB", "Supabase"] },
   { category: "DevOps", items: ["Docker", "Git", "GitHub", "Azure DevOps"] },
   { category: "Security", items: ["JWT", "bcrypt", "reCAPTCHA"] },
   { category: "API Design", items: ["REST APIs", "Swagger", "OpenAPI"] },
@@ -50,6 +50,20 @@ export const skills: Skill[] = [
 ];
 
 export const projects: Project[] = [
+  {
+    id: "nomadas-tour",
+    title: "Nómadas Tour",
+    type: "Real-time System",
+    stack: ["TypeScript", "Next.js", "Tailwind CSS", "Supabase"],
+    problem: "La compañía de viajes Nómadas Tour necesitaba una plataforma digital donde los clientes pudieran registrarse, explorar viajes disponibles y seleccionar asientos en tiempo real, similar a los sistemas de selección de asientos en cines.",
+    architecture: "Sistema full-stack con Next.js App Router, Supabase para autenticación y base de datos en tiempo real, y Tailwind CSS para la interfaz de usuario. Los asientos se bloquean en tiempo real mediante Supabase Realtime, evitando dobles reservas.",
+    challenges: "Implementar bloqueo de asientos en tiempo real para evitar conflictos de concurrencia, manejar sesiones de usuario simultáneas, y sincronizar el estado de los asientos instantáneamente entre todos los clientes conectados.",
+    solution: "Construido con Next.js y TypeScript para un frontend robusto y tipado, Tailwind CSS para una interfaz responsive y moderna, y Supabase como backend-as-a-service con su capa Realtime para sincronización bidireccional de datos en vivo.",
+    result: "Sistema de selección de asientos en tiempo real completamente funcional donde los usuarios ven actualizaciones instantáneas de disponibilidad, evitando conflictos de reserva y garantizando una experiencia fluida similar a plataformas de cine.",
+    url: "https://nomadas-tour.vercel.app/",
+    sourceUrl: "https://github.com/IngJabc/nomadas-tour",
+    ndaProtected: false,
+  },
   {
     id: "lupea",
     title: "LUPEA",

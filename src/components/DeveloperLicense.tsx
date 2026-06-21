@@ -81,7 +81,9 @@ export default function DeveloperLicense() {
             {[
               { name: "TypeScript", years: 3 },
               { name: "Next.js", years: 3 },
+              { name: "Supabase", years: 1 },
               { name: "React", years: 3 },
+              { name: "Tailwind CSS", years: 2 },
               { name: "Node.js", years: 3 },
               { name: "NestJS", years: 2 },
               { name: "Strapi", years: 2 },

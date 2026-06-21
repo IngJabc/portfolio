@@ -42,6 +42,7 @@ const BADGE_TO_SKILL_FRAGMENT: Record<string, string> = {
   "cloud": "azure",
   "rest api": "rest",
   "rest": "rest",
+  "supabase": "supabase",
 };
 
 function findSkill(

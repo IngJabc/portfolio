@@ -100,6 +100,13 @@ export const skillsData: Record<string, SkillCategory[]> = {
           level: "Advanced",
         },
         {
+          name: "Supabase",
+          description:
+            "Backend-as-a-Service platform providing PostgreSQL database, real-time subscriptions, authentication, and storage. Used for full-stack apps with live data sync.",
+          context: "Real-time seat selection, auth systems, database-backed APIs",
+          level: "Advanced",
+        },
+        {
           name: "Azure & Cloud",
           description:
             "Cloud resource management, web app hosting, and CI/CD pipeline automation on Azure with App Services and DevOps.",
@@ -129,8 +136,8 @@ export const skillsData: Record<string, SkillCategory[]> = {
         {
           name: "WebSockets & Real-Time",
           description:
-            "Real-time bidirectional communication for live events, chat, matching engines, and data synchronization.",
-          context: "Auction platforms, live dashboards, notifications",
+            "Real-time bidirectional communication for live events, chat, matching engines, seat selection systems, and data synchronization using WebSockets and Supabase Realtime.",
+          context: "Auction platforms, live dashboards, seat selection systems, notifications",
           level: "Advanced",
         },
       ],
@@ -224,6 +231,13 @@ export const skillsData: Record<string, SkillCategory[]> = {
           level: "Advanced",
         },
         {
+          name: "Supabase",
+          description:
+            "Plataforma Backend-as-a-Service que proporciona base de datos PostgreSQL, suscripciones en tiempo real, autenticación y almacenamiento. Usado para apps full-stack con sincronización de datos en vivo.",
+          context: "Selección asientos en tiempo real, sistemas auth, APIs con base de datos",
+          level: "Advanced",
+        },
+        {
           name: "Azure y Cloud",
           description:
             "Gestión de recursos cloud, hosting de apps web y automatización de CI/CD en Azure con App Services y DevOps.",
@@ -253,8 +267,8 @@ export const skillsData: Record<string, SkillCategory[]> = {
         {
           name: "WebSockets y Tiempo Real",
           description:
-            "Comunicación bidireccional en tiempo real para eventos en vivo, chat, motores de matching y sincronización de datos.",
-          context: "Plataformas de subastas, dashboards en vivo, notificaciones",
+            "Comunicación bidireccional en tiempo real para eventos en vivo, chat, motores de matching, sistemas de selección de asientos y sincronización de datos usando WebSockets y Supabase Realtime.",
+          context: "Plataformas de subastas, dashboards en vivo, sistemas de selección asientos, notificaciones",
           level: "Advanced",
         },
       ],

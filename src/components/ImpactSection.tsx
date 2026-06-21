@@ -4,9 +4,9 @@ import { useT } from "@/components/LocaleProvider";
 import { useRouter, usePathname } from "next/navigation";
 
 const stats = [
-  { value: "4+", key: "stats.projects", route: "projects" },
+  { value: "7+", key: "stats.projects", route: "projects" },
   { value: "3+", key: "stats.experience", route: "experience" },
-  { value: "8+", key: "stats.technologies", route: "skills" },
+  { value: "13+", key: "stats.technologies", route: "skills" },
   { value: "100%", key: "stats.remote", route: "contact" },
 ] as const;
 
@@ -15,7 +15,7 @@ const highlights = [
     icon: "🏗️",
     titleKey: "highlights.saas.title",
     descKey: "highlights.saas.desc",
-    tags: ["Next.js", "NestJS", "PostgreSQL"],
+    tags: ["Next.js", "NestJS", "PostgreSQL", "Supabase"],
   },
   {
     icon: "⚡",
@@ -27,15 +27,16 @@ const highlights = [
     icon: "🌐",
     titleKey: "highlights.web.title",
     descKey: "highlights.web.desc",
-    tags: ["Next.js", "Strapi", "TypeScript"],
+    tags: ["Next.js", "Strapi", "TypeScript", "Supabase"],
   },
 ] as const;
 
 const timeline = [
-  { year: "2023", name: "Develsoft SAS", resultKey: "timeline.develsoft" },
-  { year: "2024", name: "Chau Deudas", resultKey: "timeline.chaudeudas" },
-  { year: "2025", name: "Algira", resultKey: "timeline.algira" },
+  { year: "2026", name: "Nómadas Tour", resultKey: "timeline.nomadastour" },
   { year: "2026", name: "LUPEA", resultKey: "timeline.lupea" },
+  { year: "2025", name: "Algira", resultKey: "timeline.algira" },
+  { year: "2024", name: "Chau Deudas", resultKey: "timeline.chaudeudas" },
+  { year: "2023", name: "Develsoft SAS", resultKey: "timeline.develsoft" },
 ] as const;
 
 export default function ImpactSection() {
