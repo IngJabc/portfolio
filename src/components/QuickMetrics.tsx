@@ -5,7 +5,7 @@ import { useT, useLocaleContext } from "@/components/LocaleProvider";
 import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useState, useRef } from "react";
 
-const allTech = ["Next.js", "NestJS", "TypeScript", "JavaScript", "PostgreSQL", "Docker", "React", "Node.js", "Strapi", "JWT", "WebSockets"];
+const allTech = ["Next.js", "NestJS", "TypeScript", "JavaScript", "PostgreSQL", "Supabase", "Docker", "React", "Node.js", "Strapi", "Tailwind CSS", "JWT", "WebSockets"];
 
 export default function QuickMetrics() {
   const t = useT("metrics");

@@ -84,6 +84,7 @@ export const dictionary = {
           chaudeudas: "Fintech platform delivery",
           algira: "Real-time raffle system",
           lupea: "SaaS marketplace launch",
+          nomadastour: "Real-time seat selection system",
         },
       },
     },
@@ -176,6 +177,18 @@ export const dictionary = {
           result:
             "Braganza Vial's team can now update all site content autonomously from the admin panel without touching code. The project spanned 54 development hours across 6 structured stages.",
         },
+        "nomadas-tour": {
+          short:
+            "Real-time seat selection system for a travel company, built with Next.js, TypeScript, Tailwind CSS and Supabase.",
+          problem:
+            "Nómadas Tour, a travel company, needed a modern digital platform where customers could register, browse available trips, and select seats in real-time — similar to cinema seat selection systems — replacing a manual booking process that caused frequent double-booking conflicts.",
+          challenges:
+            "Implementing real-time seat locking via Supabase Realtime to prevent concurrent booking conflicts. Managing simultaneous user sessions with instant state synchronization across all connected clients, ensuring no two users could select the same seat without immediate visual feedback.",
+          solution:
+            "Built with Next.js App Router and TypeScript for a type-safe, performant frontend. Tailwind CSS for a responsive, modern UI. Supabase as backend-as-a-service providing authentication, database, and its Realtime layer for bidirectional live data synchronization across all connected clients.",
+          result:
+            "A fully functional real-time seat selection system where users see seats being reserved by others instantly, preventing conflicts and ensuring a smooth booking experience. The Supabase Realtime layer eliminated double-booking entirely and reduced the booking flow from a manual multi-step process to a few clicks.",
+        },
       },
     },
     experience: {
@@ -221,7 +234,7 @@ export const dictionary = {
           "**Backend Experience:** Yes.\n\nFrameworks: NestJS, Node.js, Strapi v5\nDatabases: PostgreSQL, MySQL, MongoDB\nAuth: JWT, bcrypt\nAPIs: RESTful APIs with Swagger documentation.\n\nProduction experience designing and implementing secure, scalable backend systems.",
         stack: "**Tech Stack & Skills:**\n\n{categories}",
         architecture:
-          "**System Architecture:**\n\nHe has architected full-stack systems including:\n• SaaS marketplace with real-time matching algorithms\n• Corporate landing pages and CMS-driven websites\n• Real-time raffle systems with payment gateways\n• Containerized microservices with Docker\n• Clean architecture patterns with scalable PostgreSQL schemas",
+          "**System Architecture:**\n\nHe has architected full-stack systems including:\n• SaaS marketplace with real-time matching algorithms\n• Corporate landing pages and CMS-driven websites\n• Real-time raffle systems with payment gateways\n• Real-time seat selection systems with Supabase Realtime\n• Containerized microservices with Docker\n• Clean architecture patterns with scalable PostgreSQL schemas",
         experience: "**Professional Experience:**\n\n{list}",
         contact:
           "**Contact:**\n\nLinkedIn: {linkedin}\n\nClick to reveal email on the contact page.",
@@ -288,7 +301,8 @@ export const dictionary = {
       capabilities: [
         "Built SaaS applications with React and Next.js",
         "Designed scalable REST APIs using Node.js and NestJS",
-        "Implemented real-time systems with WebSockets",
+        "Implemented real-time systems with WebSockets and Supabase Realtime",
+        "Built responsive UIs with Tailwind CSS",
         "Managed cloud deployments with Azure and Docker",
         "Architected headless CMS solutions with Strapi",
       ],
@@ -315,10 +329,12 @@ export const dictionary = {
       whatBuiltList: [
         "Built real-time auction/matching platforms with WebSockets",
         "Developed full-stack SaaS applications with auth, role management, and payment integration",
+        "Built real-time seat selection systems with Supabase Realtime",
         "Implemented headless CMS solutions with Strapi and PostgreSQL",
         "Designed multilingual frontend architecture with Next.js App Router",
         "Containerized full-stack applications with Docker for production deployment",
         "Built landing pages and corporate sites with headless CMS",
+        "Built responsive UIs with Tailwind CSS",
       ],
     },
     status: {
@@ -436,6 +452,7 @@ export const dictionary = {
           chaudeudas: "Entrega plataforma fintech",
           algira: "Sistema de sorteos en tiempo real",
           lupea: "Lanzamiento marketplace SaaS",
+          nomadastour: "Sistema selección asientos en tiempo real",
         },
       },
     },
@@ -528,6 +545,18 @@ export const dictionary = {
           result:
             "El equipo de Braganza Vial puede actualizar textos, imágenes, servicios, proyectos y clientes de forma autónoma desde el panel, sin tocar código. El proyecto totalizó 54 horas de desarrollo distribuidas en 6 etapas.",
         },
+        "nomadas-tour": {
+          short:
+            "Sistema de selección de asientos en tiempo real para una compañía de viajes, construido con Next.js, TypeScript, Tailwind CSS y Supabase.",
+          problem:
+            "Nómadas Tour, una compañía de viajes, necesitaba una plataforma digital moderna donde los clientes pudieran registrarse, explorar viajes disponibles y seleccionar asientos en tiempo real — similar a los sistemas de selección de asientos en cines — reemplazando un proceso manual de reservas que causaba frecuentes conflictos de doble reserva.",
+          challenges:
+            "Implementar bloqueo de asientos en tiempo real mediante Supabase Realtime para evitar conflictos de concurrencia. Manejar sesiones de usuario simultáneas con sincronización instantánea de estado entre todos los clientes conectados, asegurando que ningún par de usuarios pudiera seleccionar el mismo asiento sin retroalimentación visual inmediata.",
+          solution:
+            "Construido con Next.js App Router y TypeScript para un frontend type-safe y de alto rendimiento. Tailwind CSS para una interfaz responsive y moderna. Supabase como backend-as-a-service proporcionando autenticación, base de datos y su capa Realtime para sincronización bidireccional de datos en vivo entre todos los clientes conectados.",
+          result:
+            "Un sistema de selección de asientos en tiempo real completamente funcional donde los usuarios ven los asientos siendo reservados por otros al instante, evitando conflictos y garantizando una experiencia de reserva fluida. La capa Realtime de Supabase eliminó por completo las dobles reservas y redujo el flujo de reserva de un proceso manual de múltiples pasos a unos pocos clics.",
+        },
       },
     },
     experience: {
@@ -573,7 +602,7 @@ export const dictionary = {
           "**Experiencia Backend:** Sí.\n\nFrameworks: NestJS, Node.js, Strapi v5\nBases de Datos: PostgreSQL, MySQL, MongoDB\nAuth: JWT, bcrypt\nAPIs: RESTful APIs con documentación Swagger.\n\nExperiencia en producción diseñando e implementando sistemas backend seguros y escalables.",
         stack: "**Stack Tecnológico y Habilidades:**\n\n{categories}",
         architecture:
-          "**Arquitectura de Sistemas:**\n\nHa arquitectado sistemas full-stack incluyendo:\n• Marketplace SaaS con algoritmos de matching en tiempo real\n• Landing pages corporativas y sitios web con CMS\n• Sistemas de sorteos en tiempo real con pasarelas de pago\n• Microservicios containerizados con Docker\n• Patrones de arquitectura limpia con esquemas PostgreSQL escalables",
+          "**Arquitectura de Sistemas:**\n\nHa arquitectado sistemas full-stack incluyendo:\n• Marketplace SaaS con algoritmos de matching en tiempo real\n• Landing pages corporativas y sitios web con CMS\n• Sistemas de sorteos en tiempo real con pasarelas de pago\n• Sistemas de selección de asientos en tiempo real con Supabase Realtime\n• Microservicios containerizados con Docker\n• Patrones de arquitectura limpia con esquemas PostgreSQL escalables",
         experience: "**Experiencia Profesional:**\n\n{list}",
         contact:
           "**Contacto:**\n\nLinkedIn: {linkedin}\n\nHaz clic para revelar el email en la página de contacto.",
@@ -649,7 +678,8 @@ export const dictionary = {
       capabilities: [
         "Construí aplicaciones SaaS con React y Next.js",
         "Diseñé APIs REST escalables con Node.js y NestJS",
-        "Implementé sistemas en tiempo real con WebSockets",
+        "Implementé sistemas en tiempo real con WebSockets y Supabase Realtime",
+        "Construí UIs responsivas con Tailwind CSS",
         "Gestioné despliegues cloud con Azure y Docker",
         "Arquitecté soluciones CMS headless con Strapi",
       ],
@@ -676,10 +706,12 @@ export const dictionary = {
       whatBuiltList: [
         "Construí plataformas de subastas/matching en tiempo real con WebSockets",
         "Desarrollé aplicaciones SaaS full-stack con auth, roles e integración de pagos",
+        "Construí sistemas de selección de asientos en tiempo real con Supabase Realtime",
         "Implementé soluciones CMS headless con Strapi y PostgreSQL",
         "Diseñé arquitectura frontend multilingüe con Next.js App Router",
         "Containericé aplicaciones full-stack con Docker para despliegue en producción",
         "Construí landing pages y sitios corporativos con CMS headless",
+        "Construí UIs responsivas con Tailwind CSS",
       ],
     },
     status: {
