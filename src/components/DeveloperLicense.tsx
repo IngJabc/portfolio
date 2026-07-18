@@ -17,7 +17,9 @@ export default function DeveloperLicense() {
     <div className="mt-8">
       <div className="flex items-center gap-2 mb-4">
         <span className="text-xs font-mono text-[var(--accent)]">$</span>
-        <span className="text-xs font-mono text-[var(--text-secondary)]">cat ~/credentials/developer_id --render</span>
+        <span className="text-xs font-mono text-[var(--text-secondary)]">
+          cat ~/credentials/developer_id --render
+        </span>
       </div>
 
       <div className="glass-panel p-6">
@@ -29,14 +31,22 @@ export default function DeveloperLicense() {
               </div>
               <div>
                 <p className="text-[10px] font-mono text-[var(--text-muted)] tracking-widest">
-                  {locale === "en" ? "DEVELOPER LICENSE" : "LICENCIA DE DESARROLLADOR"}
+                  {locale === "en"
+                    ? "DEVELOPER LICENSE"
+                    : "LICENCIA DE DESARROLLADOR"}
                 </p>
-                <p className="text-[10px] font-mono text-[var(--accent)]">FS-2023-001</p>
+                <p className="text-[10px] font-mono text-[var(--accent)]">
+                  FS-2023-001
+                </p>
               </div>
             </div>
 
-            <h3 className="text-lg font-bold text-[var(--text-primary)]">{personalInfo.name}</h3>
-            <p className="text-sm text-[var(--accent)] mb-3">{personalInfo.title}</p>
+            <h3 className="text-lg font-bold text-[var(--text-primary)]">
+              {personalInfo.name}
+            </h3>
+            <p className="text-sm text-[var(--accent)] mb-3">
+              {personalInfo.title}
+            </p>
 
             <div className="space-y-1 text-xs font-mono">
               <div className="flex gap-2">
@@ -44,14 +54,18 @@ export default function DeveloperLicense() {
                   {locale === "en" ? "Class" : "Clase"}
                 </span>
                 <span className="text-[var(--accent)]">│</span>
-                <span className="text-[var(--text-primary)]">A — Web Application Engineer</span>
+                <span className="text-[var(--text-primary)]">
+                  A — Web Application Engineer
+                </span>
               </div>
               <div className="flex gap-2">
                 <span className="text-[var(--text-muted)] w-16 shrink-0 text-right">
                   {locale === "en" ? "Valid" : "Válido"}
                 </span>
                 <span className="text-[var(--accent)]">│</span>
-                <span className="text-[var(--text-primary)]">2023 — Present</span>
+                <span className="text-[var(--text-primary)]">
+                  2023 — Present
+                </span>
               </div>
               <div className="flex gap-2">
                 <span className="text-[var(--text-muted)] w-16 shrink-0 text-right">
@@ -75,7 +89,9 @@ export default function DeveloperLicense() {
 
         <div className="mt-6 pt-4 border-t border-[var(--border)]">
           <p className="text-[10px] text-[var(--text-muted)] font-mono mb-3">
-            {locale === "en" ? "TECHNOLOGY EXPERIENCE" : "EXPERIENCIA EN TECNOLOGÍAS"}
+            {locale === "en"
+              ? "TECHNOLOGY EXPERIENCE"
+              : "EXPERIENCIA EN TECNOLOGÍAS"}
           </p>
           <div className="flex flex-wrap gap-2">
             {[
@@ -83,7 +99,7 @@ export default function DeveloperLicense() {
               { name: "Next.js", years: 3 },
               { name: "Supabase", years: 1 },
               { name: "React", years: 3 },
-              { name: "Tailwind CSS", years: 2 },
+              { name: "Tailwind CSS", years: 1 },
               { name: "Node.js", years: 3 },
               { name: "NestJS", years: 2 },
               { name: "Strapi", years: 2 },
@@ -98,7 +114,8 @@ export default function DeveloperLicense() {
               >
                 {tech.name}
                 <span className="text-[var(--text-muted)]">
-                  {tech.years}{locale === "en" ? "y" : "a"}
+                  {tech.years}
+                  {locale === "en" ? "y" : "a"}
                 </span>
               </button>
             ))}

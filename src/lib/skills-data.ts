@@ -21,7 +21,8 @@ export const skillsData: Record<string, SkillCategory[]> = {
           name: "React & Next.js",
           description:
             "Built responsive SPAs, server-rendered dashboards, and multilingual apps using hooks, App Router patterns, and state management.",
-          context: "SaaS dashboards, admin panels, corporate sites, fintech interfaces",
+          context:
+            "SaaS dashboards, admin panels, corporate sites, fintech interfaces",
           level: "Production",
         },
         {
@@ -55,7 +56,8 @@ export const skillsData: Record<string, SkillCategory[]> = {
           name: "NestJS",
           description:
             "Modular REST APIs with dependency injection, guards, interceptors, and auto-generated Swagger documentation. Clean architecture for production backends.",
-          context: "SaaS backends, auth systems, marketplace APIs, fintech services",
+          context:
+            "SaaS backends, auth systems, marketplace APIs, fintech services",
           level: "Production",
         },
         {
@@ -89,7 +91,8 @@ export const skillsData: Record<string, SkillCategory[]> = {
           name: "PostgreSQL",
           description:
             "Relational schema design with normalized models, migrations, and optimized queries for production-scale data.",
-          context: "SaaS platforms, real-time systems, CMS backends",
+          context:
+            "SaaS platforms, real-time systems, CMS backends, Multi-tenant SaaS",
           level: "Advanced",
         },
         {
@@ -103,7 +106,8 @@ export const skillsData: Record<string, SkillCategory[]> = {
           name: "Supabase",
           description:
             "Backend-as-a-Service platform providing PostgreSQL database, real-time subscriptions, authentication, and storage. Used for full-stack apps with live data sync.",
-          context: "Real-time seat selection, auth systems, database-backed APIs",
+          context:
+            "Real-time seat selection, auth systems, database-backed APIs",
           level: "Advanced",
         },
         {
@@ -137,7 +141,8 @@ export const skillsData: Record<string, SkillCategory[]> = {
           name: "WebSockets & Real-Time",
           description:
             "Real-time bidirectional communication for live events, chat, matching engines, seat selection systems, and data synchronization using WebSockets and Supabase Realtime.",
-          context: "Auction platforms, live dashboards, seat selection systems, notifications",
+          context:
+            "Auction platforms, live dashboards, seat selection systems, notifications",
           level: "Advanced",
         },
       ],
@@ -152,14 +157,16 @@ export const skillsData: Record<string, SkillCategory[]> = {
           name: "React & Next.js",
           description:
             "Construí SPAs responsivas, dashboards renderizados del servidor y apps multilingüe usando hooks, App Router y gestión de estado.",
-          context: "Dashboards SaaS, paneles admin, sitios corporativos, interfaces fintech",
+          context:
+            "Dashboards SaaS, paneles admin, sitios corporativos, interfaces fintech",
           level: "Production",
         },
         {
           name: "TypeScript",
           description:
             "Desarrollo type-safe en todo el stack — desde contratos de API hasta props de componentes. Reducción de errores en tiempo de ejecución con tipado estricto.",
-          context: "Apps full-stack, librerías compartidas, capas de integración",
+          context:
+            "Apps full-stack, librerías compartidas, capas de integración",
           level: "Production",
         },
         {
@@ -173,7 +180,8 @@ export const skillsData: Record<string, SkillCategory[]> = {
           name: "Tailwind CSS y CSS Moderno",
           description:
             "Diseños responsivos utility-first con modo oscuro, glassmorphism y animaciones personalizadas sin frameworks CSS pesados.",
-          context: "Portafolios, páginas de marketing, librerías de componentes",
+          context:
+            "Portafolios, páginas de marketing, librerías de componentes",
           level: "Advanced",
         },
       ],
@@ -186,21 +194,24 @@ export const skillsData: Record<string, SkillCategory[]> = {
           name: "NestJS",
           description:
             "APIs REST modulares con inyección de dependencias, guards, interceptores y documentación Swagger autogenerada. Arquitectura limpia para backend en producción.",
-          context: "Backends SaaS, sistemas de auth, APIs de marketplace, servicios fintech",
+          context:
+            "Backends SaaS, sistemas de auth, APIs de marketplace, servicios fintech",
           level: "Production",
         },
         {
           name: "Node.js",
           description:
             "Desarrollo backend para APIs RESTful, middleware y microservicios con patrones asíncronos y manejo de errores.",
-          context: "Servicios API, capas de autenticación, procesamiento en tiempo real",
+          context:
+            "Servicios API, capas de autenticación, procesamiento en tiempo real",
           level: "Advanced",
         },
         {
           name: "Diseño de APIs REST",
           description:
             "APIs versionadas y validadas con respuestas de error consistentes, paginación y documentación OpenAPI para integraciones.",
-          context: "Integraciones fintech, plataformas marketplace, backends CMS",
+          context:
+            "Integraciones fintech, plataformas marketplace, backends CMS",
           level: "Production",
         },
         {
@@ -234,14 +245,16 @@ export const skillsData: Record<string, SkillCategory[]> = {
           name: "Supabase",
           description:
             "Plataforma Backend-as-a-Service que proporciona base de datos PostgreSQL, suscripciones en tiempo real, autenticación y almacenamiento. Usado para apps full-stack con sincronización de datos en vivo.",
-          context: "Selección asientos en tiempo real, sistemas auth, APIs con base de datos",
+          context:
+            "Selección asientos en tiempo real, sistemas auth, APIs con base de datos",
           level: "Advanced",
         },
         {
           name: "Azure y Cloud",
           description:
             "Gestión de recursos cloud, hosting de apps web y automatización de CI/CD en Azure con App Services y DevOps.",
-          context: "Automatización de despliegues, servicios de base de datos, infraestructura",
+          context:
+            "Automatización de despliegues, servicios de base de datos, infraestructura",
           level: "Intermediate",
         },
       ],
@@ -254,7 +267,8 @@ export const skillsData: Record<string, SkillCategory[]> = {
           name: "Strapi (CMS Headless)",
           description:
             "Backends CMS headless con tipos de contenido personalizados, gestión de roles, webhooks y personalización de APIs para plataformas cliente.",
-          context: "Marketplaces, sitios corporativos, apps con contenido dinámico",
+          context:
+            "Marketplaces, sitios corporativos, apps con contenido dinámico",
           level: "Advanced",
         },
         {
@@ -268,7 +282,8 @@ export const skillsData: Record<string, SkillCategory[]> = {
           name: "WebSockets y Tiempo Real",
           description:
             "Comunicación bidireccional en tiempo real para eventos en vivo, chat, motores de matching, sistemas de selección de asientos y sincronización de datos usando WebSockets y Supabase Realtime.",
-          context: "Plataformas de subastas, dashboards en vivo, sistemas de selección asientos, notificaciones",
+          context:
+            "Plataformas de subastas, dashboards en vivo, sistemas de selección asientos, notificaciones",
           level: "Advanced",
         },
       ],

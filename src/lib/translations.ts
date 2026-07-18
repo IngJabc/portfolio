@@ -34,7 +34,7 @@ export const dictionary = {
       systemReady: "System ready.",
       skip: "Skip → Dashboard",
       valueProp:
-        "I architect production-ready SaaS platforms, landing pages and real-time systems — from corporate websites to multi-tenant APIs — with Next.js, NestJS and TypeScript.",
+        "I architect production-ready SaaS platforms, Multi-tenant SaaS, landing pages and real-time systems — from corporate websites to multi-tenant APIs — with Next.js, NestJS and TypeScript.",
       viewProjects: "View Projects",
       contact: "Contact",
     },
@@ -84,7 +84,7 @@ export const dictionary = {
           chaudeudas: "Fintech platform delivery",
           algira: "Real-time raffle system",
           lupea: "SaaS marketplace launch",
-          nomadastour: "Real-time seat selection system",
+          nomadastour: "Multi-tenant SaaS",
         },
       },
     },
@@ -179,15 +179,15 @@ export const dictionary = {
         },
         "nomadas-tour": {
           short:
-            "Real-time seat selection system for a travel company, built with Next.js, TypeScript, Tailwind CSS and Supabase.",
+            "Multi-tenant SaaS platform for travel agencies featuring route management, trip scheduling, seat inventory, reservations, and QR-based check-in, built with Next.js, Express, TypeScript, and Supabase.",
           problem:
-            "Nómadas Tour, a travel company, needed a modern digital platform where customers could register, browse available trips, and select seats in real-time — similar to cinema seat selection systems — replacing a manual booking process that caused frequent double-booking conflicts.",
+            "A tourism transportation company needed to replace its manual reservation workflow with a centralized platform where administrators could manage routes, schedule trips, allocate seat inventory to multiple travel agencies, and allow each agency to manage only its own reservations while preventing inventory conflicts and improving operational efficiency.",
           challenges:
-            "Implementing real-time seat locking via Supabase Realtime to prevent concurrent booking conflicts. Managing simultaneous user sessions with instant state synchronization across all connected clients, ensuring no two users could select the same seat without immediate visual feedback.",
+            "Designing a secure multi-tenant architecture with strict data isolation between agencies, implementing concurrency control to prevent seat overselling through temporary seat locking, synchronizing reservation status in real time across connected users, building role-based authentication for Superadmin and Agency users, generating and validating QR codes for passenger check-in, and developing a scalable backend with a responsive user experience.",
           solution:
-            "Built with Next.js App Router and TypeScript for a type-safe, performant frontend. Tailwind CSS for a responsive, modern UI. Supabase as backend-as-a-service providing authentication, database, and its Realtime layer for bidirectional live data synchronization across all connected clients.",
+            "The platform was built with Next.js App Router and TypeScript on the frontend and a decoupled Express + TypeScript backend. Supabase provides PostgreSQL, Authentication, Row Level Security, and Realtime synchronization. The application includes complete route, trip, and agency management, per-agency seat allocation, multi-passenger reservations, automatic seat locking, transactional reservation flows, email notifications, QR-based boarding, and dedicated dashboards for Superadmin and Agency users.",
           result:
-            "A fully functional real-time seat selection system where users see seats being reserved by others instantly, preventing conflicts and ensuring a smooth booking experience. The Supabase Realtime layer eliminated double-booking entirely and reduced the booking flow from a manual multi-step process to a few clicks.",
+            "The project evolved into a modern SaaS platform that centralizes the entire travel agency workflow, from trip creation to passenger boarding. Real-time synchronization eliminates reservation conflicts, seat inventory remains consistent across concurrent users, manual administrative work is significantly reduced, and the architecture is scalable enough to support future modules and additional agencies.",
         },
       },
     },
@@ -270,7 +270,8 @@ export const dictionary = {
       copyLabel: "Copy to clipboard",
       emailSubject: "Let's work together",
       emailBody: "Hi José! I saw your portfolio and I'd like to connect.",
-      whatsappMessage: "Hi José! I saw your portfolio and I'd like to discuss a project opportunity.",
+      whatsappMessage:
+        "Hi José! I saw your portfolio and I'd like to discuss a project opportunity.",
       orAskAI:
         "Looking for specific insights? Query my custom RAG AI Assistant about my engineering background.",
       aiAssistant: "AI Assistant",
@@ -280,7 +281,7 @@ export const dictionary = {
       title: "Skills",
       subtitle: "skills --inventory",
       pitch:
-        "I build production-grade SaaS platforms, real-time systems, and landing pages for companies that need reliable, scalable web infrastructure. Every project I deliver is designed for maintainability from day one — with clean TypeScript, containerized backends, and thoughtful API boundaries.",
+        "I build production-grade SaaS platforms, real-time systems, multi-tenant SaaS, and landing pages for companies that need reliable, scalable web infrastructure. Every project I deliver is designed for maintainability from day one — with clean TypeScript, containerized backends, and thoughtful API boundaries.",
       pitchLabel: "// about",
       categories: {
         Frameworks: "Frameworks",
@@ -351,7 +352,7 @@ export const dictionary = {
       nameLabel: "Name",
       titleLabel: "Title",
       summary:
-        "Web Application Engineer building SaaS platforms, landing pages and real-time systems. TypeScript across the full stack.",
+        "Web Application Engineer building SaaS platforms, Multi-tenant SaaS, landing pages and real-time systems. TypeScript across the full stack.",
       uptimeLabel: "Uptime",
       domainsLabel: "Domains",
       locationLabel: "Location",
@@ -452,7 +453,7 @@ export const dictionary = {
           chaudeudas: "Entrega plataforma fintech",
           algira: "Sistema de sorteos en tiempo real",
           lupea: "Lanzamiento marketplace SaaS",
-          nomadastour: "Sistema selección asientos en tiempo real",
+          nomadastour: "SaaS multi-tenant",
         },
       },
     },
@@ -547,15 +548,15 @@ export const dictionary = {
         },
         "nomadas-tour": {
           short:
-            "Sistema de selección de asientos en tiempo real para una compañía de viajes, construido con Next.js, TypeScript, Tailwind CSS y Supabase.",
+            "Plataforma SaaS multi-tenant para agencias de viajes con gestión de rutas, viajes, reservas, inventario de asientos y check-in mediante códigos QR, construida con Next.js, Express, TypeScript y Supabase.",
           problem:
-            "Nómadas Tour, una compañía de viajes, necesitaba una plataforma digital moderna donde los clientes pudieran registrarse, explorar viajes disponibles y seleccionar asientos en tiempo real — similar a los sistemas de selección de asientos en cines — reemplazando un proceso manual de reservas que causaba frecuentes conflictos de doble reserva.",
+            "Una empresa de transporte turístico necesitaba reemplazar su proceso manual de gestión de viajes y reservas por una plataforma centralizada que permitiera al administrador crear rutas, programar viajes, asignar cupos a múltiples agencias y permitir que cada agencia gestionara únicamente sus propias reservas, evitando conflictos de inventario y mejorando la experiencia de pasajeros y operadores.",
           challenges:
-            "Implementar bloqueo de asientos en tiempo real mediante Supabase Realtime para evitar conflictos de concurrencia. Manejar sesiones de usuario simultáneas con sincronización instantánea de estado entre todos los clientes conectados, asegurando que ningún par de usuarios pudiera seleccionar el mismo asiento sin retroalimentación visual inmediata.",
+            "Diseñar una arquitectura multi-tenant segura con aislamiento de datos entre agencias, implementar control de concurrencia para evitar sobreventas mediante bloqueo temporal de asientos, sincronización en tiempo real entre usuarios conectados, autenticación basada en roles (Superadmin y Agency), generación y validación de códigos QR para el embarque, además de construir un backend escalable con APIs desacopladas y una experiencia responsive para escritorio y dispositivos móviles.",
           solution:
-            "Construido con Next.js App Router y TypeScript para un frontend type-safe y de alto rendimiento. Tailwind CSS para una interfaz responsive y moderna. Supabase como backend-as-a-service proporcionando autenticación, base de datos y su capa Realtime para sincronización bidireccional de datos en vivo entre todos los clientes conectados.",
+            "Se desarrolló una arquitectura desacoplada utilizando Next.js App Router para el frontend y Express con TypeScript para el backend. Supabase proporciona PostgreSQL, autenticación, Row Level Security y Realtime para sincronizar cambios instantáneamente. El sistema incluye administración completa de rutas, viajes y agencias, asignación de inventario por agencia, reservas con múltiples pasajeros, bloqueo automático de asientos, notificaciones por correo electrónico, generación de códigos QR para check-in y paneles independientes para Superadmin y Agencias.",
           result:
-            "Un sistema de selección de asientos en tiempo real completamente funcional donde los usuarios ven los asientos siendo reservados por otros al instante, evitando conflictos y garantizando una experiencia de reserva fluida. La capa Realtime de Supabase eliminó por completo las dobles reservas y redujo el flujo de reserva de un proceso manual de múltiples pasos a unos pocos clics.",
+            "Se obtuvo una plataforma moderna de gestión de operaciones para agencias de viajes que centraliza todo el flujo de negocio, desde la creación de viajes hasta el embarque de pasajeros. El sistema elimina conflictos de reservas, garantiza la integridad del inventario mediante sincronización en tiempo real, reduce significativamente las tareas manuales y proporciona una solución escalable preparada para incorporar nuevos módulos y agencias.",
         },
       },
     },
@@ -647,7 +648,8 @@ export const dictionary = {
       copyLabel: "Copiar al portapapeles",
       emailSubject: "Trabajemos juntos",
       emailBody: "¡Hola José! Vi tu portafolio y me gustaría conectar.",
-      whatsappMessage: "¡Hola José! Vi tu portafolio y me gustaría hablar sobre una oportunidad de proyecto.",
+      whatsappMessage:
+        "¡Hola José! Vi tu portafolio y me gustaría hablar sobre una oportunidad de proyecto.",
       orAskAI:
         "¿Buscas información específica? Consulta mi RAG AI Assistant personalizado sobre mi perfil de ingeniería.",
       aiAssistant: "AI Assistant",

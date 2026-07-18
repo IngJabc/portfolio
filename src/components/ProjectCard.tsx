@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Project } from "@/lib/cv-data";
 import { useT, useLocaleContext } from "@/components/LocaleProvider";
 import { useRouter, usePathname } from "next/navigation";
 import { dictionary } from "@/lib/translations";
+import ProjectCarousel from "@/components/ProjectCarousel/ProjectCarousel";
 
 export default function ProjectCard({ project }: { project: Project }) {
   const t = useT("projects");
@@ -14,6 +15,14 @@ export default function ProjectCard({ project }: { project: Project }) {
   const fullPath = usePathname();
   const urlLocale = fullPath.split("/")[1] || "en";
   const [expanded, setExpanded] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handleFocusCard = useCallback(() => {
+    cardRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    setFocused(true);
+    setTimeout(() => setFocused(false), 2000);
+  }, []);
 
   const handleTechClick = (tech: string) => {
     router.push(`/${urlLocale}/skills?highlight=${encodeURIComponent(tech)}`);
@@ -31,7 +40,7 @@ export default function ProjectCard({ project }: { project: Project }) {
   ];
 
   return (
-    <div className="glass-panel overflow-hidden">
+    <div ref={cardRef} className={`glass-panel overflow-hidden transition-shadow duration-300 ${focused ? "shadow-[0_0_20px_var(--accent-30)] border-[var(--accent)]/40" : ""}`}>
       <button
         onClick={() => setExpanded(!expanded)}
         aria-expanded={expanded}
@@ -71,6 +80,10 @@ export default function ProjectCard({ project }: { project: Project }) {
             </motion.span>
         </div>
       </button>
+
+      {project.images && project.images.length > 0 && (
+        <ProjectCarousel images={project.images} title={project.title} onOpen={() => { setExpanded(true); handleFocusCard(); }} />
+      )}
 
       <AnimatePresence>
         {expanded && (
