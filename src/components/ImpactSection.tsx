@@ -32,7 +32,7 @@ const highlights = [
 ] as const;
 
 const timeline = [
-  { year: "2026", name: "Nómadas Tour", resultKey: "timeline.nomadastour" },
+  { year: "2026", name: "Nómadas Tours", resultKey: "timeline.nomadastour" },
   { year: "2026", name: "LUPEA", resultKey: "timeline.lupea" },
   { year: "2025", name: "Algira", resultKey: "timeline.algira" },
   { year: "2024", name: "Chau Deudas", resultKey: "timeline.chaudeudas" },

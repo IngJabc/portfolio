@@ -3,6 +3,7 @@ export interface Project {
   title: string;
   type: string;
   stack: string[];
+  images?: string[];
   problem: string;
   architecture: string;
   challenges: string;
@@ -30,19 +31,44 @@ export interface Skill {
 
 export const personalInfo = {
   name: "José Bonilla",
-  title: "Web Application Engineer specialized in SaaS, Real-Time Systems & RESTful APIs",
+  title:
+    "Web Application Engineer specialized in SaaS, Real-Time Systems & RESTful APIs",
   email: "",
   linkedin: "https://www.linkedin.com/in/ing-jabc",
   github: "https://github.com/ing-jabc",
   bio: "Web Application Engineer with 3+ years of experience building scalable web applications. Specialized in Next.js, NestJS, and real-time systems. Passionate about clean architecture, system design, and production-grade solutions.",
   yearsOfExperience: 3,
-  domains: ["SaaS", "Landing Pages", "Real-time Systems", "API Architecture", "Headless CMS"],
+  domains: [
+    "SaaS",
+    "Multi-tenant SaaS",
+    "Landing Pages",
+    "Real-time Systems",
+    "Multi-tenant SaaS",
+    "API Architecture",
+    "Headless CMS",
+  ],
 };
 
 export const skills: Skill[] = [
-  { category: "Frameworks", items: ["React", "Next.js", "Node.js", "NestJS", "Strapi v5", "Tailwind CSS"] },
-  { category: "Languages", items: ["TypeScript", "JavaScript", "SQL", "C#", "Java"] },
-  { category: "Databases", items: ["PostgreSQL", "MySQL", "MongoDB", "Supabase"] },
+  {
+    category: "Frameworks",
+    items: [
+      "React",
+      "Next.js",
+      "Node.js",
+      "NestJS",
+      "Strapi v5",
+      "Tailwind CSS",
+    ],
+  },
+  {
+    category: "Languages",
+    items: ["TypeScript", "JavaScript", "SQL", "C#", "Java"],
+  },
+  {
+    category: "Databases",
+    items: ["PostgreSQL", "MySQL", "MongoDB", "Supabase"],
+  },
   { category: "DevOps", items: ["Docker", "Git", "GitHub", "Azure DevOps"] },
   { category: "Security", items: ["JWT", "bcrypt", "reCAPTCHA"] },
   { category: "API Design", items: ["REST APIs", "Swagger", "OpenAPI"] },
@@ -52,15 +78,33 @@ export const skills: Skill[] = [
 export const projects: Project[] = [
   {
     id: "nomadas-tour",
-    title: "Nómadas Tour",
-    type: "Real-time System",
+    title: "Nómadas Tours",
+    type: "Multi-tenant SaaS",
     stack: ["TypeScript", "Next.js", "Tailwind CSS", "Supabase"],
-    problem: "La compañía de viajes Nómadas Tour necesitaba una plataforma digital donde los clientes pudieran registrarse, explorar viajes disponibles y seleccionar asientos en tiempo real, similar a los sistemas de selección de asientos en cines.",
-    architecture: "Sistema full-stack con Next.js App Router, Supabase para autenticación y base de datos en tiempo real, y Tailwind CSS para la interfaz de usuario. Los asientos se bloquean en tiempo real mediante Supabase Realtime, evitando dobles reservas.",
-    challenges: "Implementar bloqueo de asientos en tiempo real para evitar conflictos de concurrencia, manejar sesiones de usuario simultáneas, y sincronizar el estado de los asientos instantáneamente entre todos los clientes conectados.",
-    solution: "Construido con Next.js y TypeScript para un frontend robusto y tipado, Tailwind CSS para una interfaz responsive y moderna, y Supabase como backend-as-a-service con su capa Realtime para sincronización bidireccional de datos en vivo.",
-    result: "Sistema de selección de asientos en tiempo real completamente funcional donde los usuarios ven actualizaciones instantáneas de disponibilidad, evitando conflictos de reserva y garantizando una experiencia fluida similar a plataformas de cine.",
-    url: "https://nomadas-tour.vercel.app/",
+    images: [
+      "/projects/nomadas-tour/dashboard admin.jpg",
+      "/projects/nomadas-tour/trips admin.jpg",
+      "/projects/nomadas-tour/passengers admin.jpg",
+      "/projects/nomadas-tour/routes admin.jpg",
+      "/projects/nomadas-tour/agency admin.jpg",
+      "/projects/nomadas-tour/dashboard agency.jpg",
+      "/projects/nomadas-tour/trips agency.jpg",
+      "/projects/nomadas-tour/seats selection agency.jpg",
+      "/projects/nomadas-tour/seats selection agency step 2.jpg",
+      "/projects/nomadas-tour/confirmed reservation.jpg",
+      "/projects/nomadas-tour/boarding.jpg",
+    ],
+    problem:
+      "La compañía de viajes Nómadas Tours necesitaba una plataforma digital donde los clientes pudieran registrarse, explorar viajes disponibles y seleccionar asientos en tiempo real, similar a los sistemas de selección de asientos en cines.",
+    architecture:
+      "Sistema full-stack con Next.js App Router, Supabase para autenticación y base de datos en tiempo real, y Tailwind CSS para la interfaz de usuario. Los asientos se bloquean en tiempo real mediante Supabase Realtime, evitando dobles reservas.",
+    challenges:
+      "Implementar bloqueo de asientos en tiempo real para evitar conflictos de concurrencia, manejar sesiones de usuario simultáneas, y sincronizar el estado de los asientos instantáneamente entre todos los clientes conectados.",
+    solution:
+      "Construido con Next.js y TypeScript para un frontend robusto y tipado, Tailwind CSS para una interfaz responsive y moderna, y Supabase como backend-as-a-service con su capa Realtime para sincronización bidireccional de datos en vivo.",
+    result:
+      "Sistema de selección de asientos en tiempo real completamente funcional donde los usuarios ven actualizaciones instantáneas de disponibilidad, evitando conflictos de reserva y garantizando una experiencia fluida similar a plataformas de cine.",
+    url: "https://nomadastours.vercel.app/",
     sourceUrl: "https://github.com/IngJabc/nomadas-tour",
     ndaProtected: false,
   },
@@ -68,12 +112,31 @@ export const projects: Project[] = [
     id: "lupea",
     title: "LUPEA",
     type: "SaaS",
-    stack: ["Next.js", "Strapi v5", "TypeScript", "PostgreSQL", "WebSockets", "JWT"],
-    problem: "Los clientes necesitaban buscar repuestos de vehículos por marca, modelo, año y calidad, mientras los proveedores ofrecían precios y disponibilidad basados en cercanía geográfica.",
-    architecture: "Plataforma tipo marketplace con matching algorithm. Clientes publican búsquedas, proveedores reciben notificaciones en tiempo real y ofertan. Sistema de chat bidireccional post-aceptación.",
-    challenges: "Implementar un sistema de matching eficiente entre búsquedas de clientes y ofertas de proveedores, manejo de WebSockets para notificaciones en tiempo real, y un sistema de chat escalable.",
-    solution: "Arquitectura basada en Next.js con Strapi como CMS headless. WebSockets para comunicación en tiempo real. Algoritmo de matching por geolocalización y filtros. JWT para autenticación segura.",
-    result: "Plataforma SaaS funcional con experiencia tipo 'Tinder' para compra/venta de repuestos, chat en tiempo real y sistema de cotizaciones.",
+    stack: [
+      "Next.js",
+      "Strapi v5",
+      "TypeScript",
+      "PostgreSQL",
+      "WebSockets",
+      "JWT",
+    ],
+    images: [
+      "/projects/lupea/landing page.jpg",
+      "/projects/lupea/landing page 2.jpg",
+      "/projects/lupea/landing page 3.jpg",
+      "/projects/lupea/landing page 4.jpg",
+      "/projects/lupea/landing page 5.jpg",
+    ],
+    problem:
+      "Los clientes necesitaban buscar repuestos de vehículos por marca, modelo, año y calidad, mientras los proveedores ofrecían precios y disponibilidad basados en cercanía geográfica.",
+    architecture:
+      "Plataforma tipo marketplace con matching algorithm. Clientes publican búsquedas, proveedores reciben notificaciones en tiempo real y ofertan. Sistema de chat bidireccional post-aceptación.",
+    challenges:
+      "Implementar un sistema de matching eficiente entre búsquedas de clientes y ofertas de proveedores, manejo de WebSockets para notificaciones en tiempo real, y un sistema de chat escalable.",
+    solution:
+      "Arquitectura basada en Next.js con Strapi como CMS headless. WebSockets para comunicación en tiempo real. Algoritmo de matching por geolocalización y filtros. JWT para autenticación segura.",
+    result:
+      "Plataforma SaaS funcional con experiencia tipo 'Tinder' para compra/venta de repuestos, chat en tiempo real y sistema de cotizaciones.",
     url: "https://www.lupea.app/",
     sourceUrl: null,
     ndaProtected: true,
@@ -82,14 +145,29 @@ export const projects: Project[] = [
     id: "algira",
     title: "Algira",
     type: "Real-time System",
-    stack: ["Next.js", "Strapi v5", "TypeScript", "PostgreSQL", "WebSockets", "JWT", "Braintree"],
-    problem: "Crear un sistema de rifas en tiempo real con pasarela de pago integrada, donde los usuarios pudieran participar y ver resultados al instante.",
-    architecture: "Plataforma de rifas en tiempo real con Next.js, Strapi como backend headless, WebSockets para actualizaciones en vivo, y Braintree para procesamiento de pagos.",
-    challenges: "Sincronización de eventos en tiempo real durante los sorteos, integración segura con Braintree, manejo de concurrencia en la compra de participaciones.",
-    solution: "Implementación de WebSockets para transmisión de eventos en vivo. Integración con Braintree para pagos seguros. Arquitectura escalable con Strapi y PostgreSQL.",
-    result: "Sistema de rifas en tiempo real completamente funcional con pagos integrados, actualizaciones en vivo y experiencia de usuario fluida.",
+    stack: [
+      "Next.js",
+      "Strapi v5",
+      "TypeScript",
+      "PostgreSQL",
+      "WebSockets",
+      "JWT",
+      "Braintree",
+    ],
+    images: [],
+    problem:
+      "Crear un sistema de rifas en tiempo real con pasarela de pago integrada, donde los usuarios pudieran participar y ver resultados al instante.",
+    architecture:
+      "Plataforma de rifas en tiempo real con Next.js, Strapi como backend headless, WebSockets para actualizaciones en vivo, y Braintree para procesamiento de pagos.",
+    challenges:
+      "Sincronización de eventos en tiempo real durante los sorteos, integración segura con Braintree, manejo de concurrencia en la compra de participaciones.",
+    solution:
+      "Implementación de WebSockets para transmisión de eventos en vivo. Integración con Braintree para pagos seguros. Arquitectura escalable con Strapi y PostgreSQL.",
+    result:
+      "Sistema de rifas en tiempo real completamente funcional con pagos integrados, actualizaciones en vivo y experiencia de usuario fluida.",
     url: "https://algira-web.vercel.app/",
-    sourceUrl: "https://develsoftdev@dev.azure.com/develsoftdev/Algira/_git/Algira_Web",
+    sourceUrl:
+      "https://develsoftdev@dev.azure.com/develsoftdev/Algira/_git/Algira_Web",
     ndaProtected: false,
   },
   {
@@ -97,7 +175,17 @@ export const projects: Project[] = [
     title: "Paula Román — Asesora Jurídica",
     type: "Landing Page / Corporate Website",
     stack: ["Next.js", "TypeScript"],
-    problem: "Designed and built a professional landing page for an independent legal advisor, focused on credibility, clarity, and lead generation.",
+    images: [
+      "/projects/paula-roman/landing page 1.jpg",
+      "/projects/paula-roman/landing page 2.jpg",
+      "/projects/paula-roman/landing page 3.jpg",
+      "/projects/paula-roman/landing page 4.jpg",
+      "/projects/paula-roman/landing page 5.jpg",
+      "/projects/paula-roman/landing page 6.jpg",
+      "/projects/paula-roman/landing page 7.jpg",
+    ],
+    problem:
+      "Designed and built a professional landing page for an independent legal advisor, focused on credibility, clarity, and lead generation.",
     architecture: "",
     challenges:
       "Paula Román, a strategic mentor with 30+ years in the insurance industry, had no digital presence. She needed a professional landing page to communicate her value proposition to independent insurance brokers and drive direct WhatsApp leads.",
@@ -114,11 +202,24 @@ export const projects: Project[] = [
     title: "Chau Deudas",
     type: "Fintech",
     stack: ["Next.js", "TypeScript", ".NET Core", "C#", "MySQL", "reCAPTCHA"],
-    problem: "Usuarios necesitaban acceso a créditos y planes de pago para consolidar y saldar sus deudas de forma sencilla.",
-    architecture: "Frontend en Next.js con diseño basado en Figma. Backend en .NET Core con C#. Integración con sistemas financieros para procesamiento de créditos.",
-    challenges: "Traducir diseños de Figma a una interfaz funcional y responsive, integración con APIs financieras, manejo de formularios complejos con validación en tiempo real.",
-    solution: "Desarrollo frontend completo con Next.js y TypeScript, siguiendo fielmente los diseños de Figma. Implementación de reCAPTCHA para seguridad. Consumo de APIs REST del backend .NET.",
-    result: "Interfaz de usuario moderna y funcional para una plataforma fintech de créditos, con experiencia de usuario fluida y diseño responsive.",
+    images: [
+      "/projects/chau-deudas/landing page 1.jpg",
+      "/projects/chau-deudas/landing page 2.jpg",
+      "/projects/chau-deudas/quienes somos.jpg",
+      "/projects/chau-deudas/como funciona.jpg",
+      "/projects/chau-deudas/preguntas frecuentes.jpg",
+      "/projects/chau-deudas/consulta ya.jpg",
+    ],
+    problem:
+      "Usuarios necesitaban acceso a créditos y planes de pago para consolidar y saldar sus deudas de forma sencilla.",
+    architecture:
+      "Frontend en Next.js con diseño basado en Figma. Backend en .NET Core con C#. Integración con sistemas financieros para procesamiento de créditos.",
+    challenges:
+      "Traducir diseños de Figma a una interfaz funcional y responsive, integración con APIs financieras, manejo de formularios complejos con validación en tiempo real.",
+    solution:
+      "Desarrollo frontend completo con Next.js y TypeScript, siguiendo fielmente los diseños de Figma. Implementación de reCAPTCHA para seguridad. Consumo de APIs REST del backend .NET.",
+    result:
+      "Interfaz de usuario moderna y funcional para una plataforma fintech de créditos, con experiencia de usuario fluida y diseño responsive.",
     url: "https://www.chaudeudas.com.uy/",
     sourceUrl: null,
     ndaProtected: true,
@@ -128,13 +229,20 @@ export const projects: Project[] = [
     title: "Develsoft SAS",
     type: "Website",
     stack: ["Next.js", "NestJS", "TypeScript", "PostgreSQL"],
-    problem: "La empresa necesitaba una presencia web corporativa que reflejara su expertise en desarrollo de software y arquitectura de sistemas.",
-    architecture: "Sitio web corporativo construido con Next.js para el frontend y NestJS para el backend, con PostgreSQL como base de datos.",
-    challenges: "Crear un sitio que comunicara profesionalismo y capacidad técnica, optimizado para SEO y con rendimiento excepcional.",
-    solution: "Desarrollo fullstack con Next.js y NestJS, arquitectura limpia, diseño responsivo y optimización de Core Web Vitals.",
-    result: "Sitio web corporativo profesional que representa a la empresa en el mercado digital.",
+    images: [],
+    problem:
+      "La empresa necesitaba una presencia web corporativa que reflejara su expertise en desarrollo de software y arquitectura de sistemas.",
+    architecture:
+      "Sitio web corporativo construido con Next.js para el frontend y NestJS para el backend, con PostgreSQL como base de datos.",
+    challenges:
+      "Crear un sitio que comunicara profesionalismo y capacidad técnica, optimizado para SEO y con rendimiento excepcional.",
+    solution:
+      "Desarrollo fullstack con Next.js y NestJS, arquitectura limpia, diseño responsivo y optimización de Core Web Vitals.",
+    result:
+      "Sitio web corporativo profesional que representa a la empresa en el mercado digital.",
     url: "https://www.develsoft.dev/",
-    sourceUrl: "https://develsoftdev@dev.azure.com/develsoftdev/Develsoft/_git/Develsoft_Web",
+    sourceUrl:
+      "https://develsoftdev@dev.azure.com/develsoftdev/Develsoft/_git/Develsoft_Web",
     ndaProtected: false,
   },
   {
@@ -142,12 +250,19 @@ export const projects: Project[] = [
     title: "Braganza Vial",
     type: "Landing Page / Corporate Website",
     stack: ["Next.js", "TypeScript", "Strapi"],
-    problem: "Built a corporate landing page for a road infrastructure company, using Strapi as headless CMS for content management.",
+    images: [
+      "/projects/braganza-vial/landing page 1.jpg",
+      "/projects/braganza-vial/landing page 2.jpg",
+      "/projects/braganza-vial/landing page 3.jpg",
+      "/projects/braganza-vial/proyectos.jpg",
+    ],
+    problem:
+      "Built a corporate landing page for a road infrastructure company, using Strapi as headless CMS for content management.",
     architecture: "",
     challenges:
       "Braganza Vial's website had all content hardcoded directly into the codebase. The team couldn't update services, projects, clients, navigation or footer without developer intervention, creating constant technical dependency.",
     solution:
-      "Migrated the backend to Strapi v5 with PostgreSQL, designing a full content structure for all site sections. Connected the existing frontend to the new CMS without altering the UI, and built a new \"Clients\" section with a logo grid manageable entirely from the admin panel.",
+      'Migrated the backend to Strapi v5 with PostgreSQL, designing a full content structure for all site sections. Connected the existing frontend to the new CMS without altering the UI, and built a new "Clients" section with a logo grid manageable entirely from the admin panel.',
     result:
       "Braganza Vial's team can now update all site content autonomously from the admin panel without touching code. The project spanned 54 development hours across 6 structured stages.",
     url: "https://www.braganzavial.com.uy/",
@@ -168,7 +283,21 @@ export const experience: Experience[] = [
       "Engineered responsive, component-driven UIs with React and Next.js, enforcing clean architecture patterns that reduced cross-team merge conflicts and accelerated feature delivery.",
       "Orchestrated full-stack application containerization using Docker and Compose, standardizing development environments and streamlining CI/CD pipelines — cutting new developer onboarding time by approximately 60%.",
     ],
-    tech: ["Next.js", "NestJS", "TypeScript", "PostgreSQL", "Docker", "Strapi", "WebSockets", "JWT", "Braintree", ".NET Core", "C#", "MySQL", "reCAPTCHA"],
+    tech: [
+      "Next.js",
+      "NestJS",
+      "TypeScript",
+      "PostgreSQL",
+      "Docker",
+      "Strapi",
+      "WebSockets",
+      "JWT",
+      "Braintree",
+      ".NET Core",
+      "C#",
+      "MySQL",
+      "reCAPTCHA",
+    ],
   },
   {
     company: "Marna Corporate Group C.A.",

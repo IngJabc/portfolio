@@ -5,7 +5,21 @@ import { useT, useLocaleContext } from "@/components/LocaleProvider";
 import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useState, useRef } from "react";
 
-const allTech = ["Next.js", "NestJS", "TypeScript", "JavaScript", "PostgreSQL", "Supabase", "Docker", "React", "Node.js", "Strapi", "Tailwind CSS", "JWT", "WebSockets"];
+const allTech = [
+  "Next.js",
+  "NestJS",
+  "TypeScript",
+  "JavaScript",
+  "PostgreSQL",
+  "Supabase",
+  "Docker",
+  "React",
+  "Node.js",
+  "Strapi",
+  "Tailwind CSS",
+  "JWT",
+  "WebSockets",
+];
 
 export default function QuickMetrics() {
   const t = useT("metrics");
@@ -19,6 +33,7 @@ export default function QuickMetrics() {
   };
 
   const specsSkillMap: Record<string, string> = {
+    "Multi-tenant SaaS": "Next.js & Express",
     "SaaS Platforms": "React & Next.js",
     "Web Applications": "TypeScript",
     "Real-Time Systems": "WebSockets & Real-Time",
@@ -34,7 +49,12 @@ export default function QuickMetrics() {
   const rows = [
     { label: t("nameLabel"), val: personalInfo.name },
     { label: t("titleLabel"), val: personalInfo.title },
-    { label: t("uptimeLabel"), val: `${personalInfo.yearsOfExperience}+ ${locale === "en" ? "years" : "años"}` },
+    {
+      label: t("uptimeLabel"),
+      val: `${personalInfo.yearsOfExperience}+ ${
+        locale === "en" ? "years" : "años"
+      }`,
+    },
     { label: t("domainsLabel"), val: personalInfo.domains.join(" · ") },
     { label: t("locationLabel"), val: "Venezuela" },
     { label: t("languageLabel"), val: "EN / ES" },
@@ -77,15 +97,22 @@ export default function QuickMetrics() {
   const show = (idx: number) => idx <= visible;
 
   return (
-    <div ref={ref} className="glass-panel p-6 h-full border-t-2 border-[var(--accent)]/40">
+    <div
+      ref={ref}
+      className="glass-panel p-6 h-full border-t-2 border-[var(--accent)]/40"
+    >
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <span className="text-xs font-mono text-[var(--accent)]">$</span>
-          <span className="text-xs font-mono text-[var(--text-secondary)]">cat ~/quick-metrics --profile</span>
+          <span className="text-xs font-mono text-[var(--text-secondary)]">
+            cat ~/quick-metrics --profile
+          </span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="w-1.5 h-1.5 rounded-full bg-[var(--success)] animate-pulse" />
-          <span className="text-[10px] font-mono text-[var(--success)]">ACTIVE</span>
+          <span className="text-[10px] font-mono text-[var(--success)]">
+            ACTIVE
+          </span>
         </div>
       </div>
 
@@ -117,7 +144,9 @@ export default function QuickMetrics() {
 
       <div
         className={`mt-3 transition-all duration-500 ${
-          show(rows.length) ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"
+          show(rows.length)
+            ? "opacity-100 translate-x-0"
+            : "opacity-0 -translate-x-2"
         }`}
       >
         <p className="text-[11px] font-mono text-[var(--text-secondary)] leading-relaxed">
@@ -133,7 +162,9 @@ export default function QuickMetrics() {
 
       <div
         className={`mb-4 transition-all duration-500 ${
-          show(rows.length + 2) ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"
+          show(rows.length + 2)
+            ? "opacity-100 translate-x-0"
+            : "opacity-0 -translate-x-2"
         }`}
       >
         <p className="text-[10px] font-mono text-[var(--text-muted)] mb-2 tracking-widest">
@@ -160,7 +191,9 @@ export default function QuickMetrics() {
 
       <div
         className={`flex flex-wrap gap-1 transition-all duration-500 ${
-          show(rows.length + 4) ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2"
+          show(rows.length + 4)
+            ? "opacity-100 translate-x-0"
+            : "opacity-0 -translate-x-2"
         }`}
       >
         {allTech.map((tech) => (
